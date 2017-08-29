@@ -1,0 +1,20 @@
+
+
+STEPS on deploying site to gh-pages
+
+// make sure gulp is running
+// make your changes
+// changes should indicate the removal of /public/styles/style.css and /public/scripts/main.js
+inside of the .gitignore (so that we are no longer ignoring our complied code)
+// quit gulp (control c)
+// add, commit, and push our changes to master branch
+// git checkout -b gh-pages (this creates a new branch called gh-pages)
+// push our updated code from the master branch into gh-pages by running the following command: 'git push origin gh-pages'
+// go back to your github repo for this project, navigate to settings, and under 'GitHub Pages', you should see a link to your live site (this can take a while to propagate)
+// in order to continue working on your master branch and further pushing code to this branch, use the following commands:
+// git checkout master (this will take us back to our master branch)
+// this branch is currently NOT ignoring our /public/styles/style.css & /public/scripts/main.js
+// So now we have to RUN gulp
+// insert /public/styles/style.css and /public/scripts/main.js back into our .gitignore
+// quit gulp
+//add, commit, and push changes to master branch (git add -A, git commit -m "", git push origin master)
