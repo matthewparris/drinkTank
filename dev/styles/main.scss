@@ -1,10 +1,7 @@
 @import 'setup';
-
-.container {
-	max-width: 900px;
-	margin: 0 auto;
-}
-
-body{
-	background: darkcyan;
-}
+@import 'variables';
+@import 'global';
+@import 'header';
+@import 'about';
+@import 'app';
+@import 'footer';
