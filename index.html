@@ -34,6 +34,19 @@
 			<div class="liquorChoice tequila">Tequia</div>
 		</div>
 
+		<form action="select" class="typeOfCocktail">
+			<select name="cocktailOption" id="" class="cocktailOption">
+				<option>please select</option>
+				<option value="rum">rum</option>
+				<option value="whiskey">whiskey</option>
+				<option value="gin">gin</option>
+				<option value="blimblam">liqueurs</option>
+				<option value="wine">wine</option>
+				<option value="vodka">vodka</option>
+				<option value="tequila">tequila</option>
+			</select>
+		</form>
+
 		<div class="cocktailResults">
 			<!-- this is where the stuff will be populated form the cocktail DB -->
 
@@ -42,11 +55,7 @@
 		<div class="lcboResults wrapper">
 			<!-- this is where the listings from the LCBO will be populated -->
 			<form action="submit" class="whatBooze">
-				<input type="" class="inventoryChoice">
-			</form>
-		</div>
-
-		<div class="yourMatch">
+				<input type="" class="inventoryChoice" placeholder="what type of booze do y"yourMatch">
 			<!-- this is where the final match of your LCBO results and cocktail DB results will display. Also a map -->
 		</div>
 	</section>
