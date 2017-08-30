@@ -133,7 +133,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: purple; }
+  background: blue; }
 
 .wrapper {
   max-width: 1050px;
@@ -142,6 +142,7 @@ body {
 img {
   max-width: 100%; }
 
+<<<<<<< HEAD
 
 .headerNav {
   display: flex; }
@@ -152,6 +153,8 @@ img {
 .nav {
   display: flex; }
 
+=======
+>>>>>>> 07b9d77d5c71bf23ddbf745b056a446469e03bef
 li {
   list-style: none; }
 
@@ -161,4 +164,7 @@ a {
 header {
   background: url(../assets/background.jpg);
   height: 100vh; }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 07b9d77d5c71bf23ddbf745b056a446469e03bef
