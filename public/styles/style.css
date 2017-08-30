@@ -149,5 +149,5 @@ a {
   text-decoration: none; }
 
 header {
-  background: url(../assets/background.jpg);
+  background: url(./assets/background.jpg);
   height: 100vh; }
