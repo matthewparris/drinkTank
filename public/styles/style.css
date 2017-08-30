@@ -132,8 +132,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  background: blue; }
+  font-family: 'Open Sans', sans-serif; }
 
 .wrapper {
   max-width: 1050px;
@@ -149,5 +148,57 @@ a {
   text-decoration: none; }
 
 header {
-  background: url(./assets/background.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url(../../../dev/assets/background.jpg);
+  height: 100vh;
+  background-size: cover; }
+
+h1 {
+  color: rgba(225, 225, 225, 0.9);
+  font-size: 120px;
+  font-family: 'Abril Fatface', cursive;
+  width: 50%;
+  margin: 0;
+  margin-bottom: 50px;
+  letter-spacing: 3px; }
+
+a {
+  color: rgba(225, 225, 225, 0.9);
+  border: 1px solid white;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+
+a:hover {
+  background: rgba(159, 53, 24, 0.8);
+  border: 1px solid rgba(159, 53, 24, 0.8); }
+
+.relative {
+  height: 50vh;
+  position: relative; }
+
+.content {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(0, -50%);
+          transform: translateY(0, -50%); }
+
+.theApp {
   height: 100vh; }
+
+.absolute {
+  height: 100vh;
+  position: relative; }
+
+.theAppDetails {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
+  -webkit-transform: translateY(-50%, -50%);
+          transform: translateY(-50%, -50%); }
+
+.liquorChoice {
+  border: 1px; }

@@ -11,13 +11,49 @@
 </head>
 <body>
 	<header>
-		<div class="wrapper">
-			<h1>Oh Wow Cocktails</h1>
-			<a href="#theApp">Let's get started</a>
+		<div class="wrapper relative">
+			<div class="content">
+				<h1>Oh Wow Cocktails</h1>
+				<a href="#theApp">Let's get started</a>
+			</div>
 		</div>
 	</header>
-
 	<section class="theApp" id="theApp">
+		<div class="absolute">
+			<div class="wrapper theAppDetails">
+				<div class="location">
+					<form action="" class="place">
+						<input type="text" class="placeInput" placeholder="Where are you?">
+					</form>
+				</div>
+				
+				<div class="typeOfLiquor">
+					<div class="liquorChoice rum">Rum</div>
+					<div class="liquorChoice whiskey">Whiskey</div>
+					<div class="liquorChoice gin">Gin</div>
+					<div class="liquorChoice liquer">Liquers</div>
+					<div class="liquorChoice wine">Wine</div>
+					<div class="liquorChoice vodka">Vodka</div>
+					<div class="liquorChoice tequila">Tequia</div>
+				</div>
+				
+				<div class="cocktailResults">
+					<!-- this is where the stuff will be populated form the cocktail DB -->
+				
+				</div>
+				
+				<div class="lcboResults">
+					<!-- this is where the listings from the LCBO will be populated -->
+					<form action="submit" class="whatBooze">
+						<input type="" class="inventoryChoice">
+					</form>
+				</div>
+				
+				<div class="yourMatch">
+					<!-- this is where the final match of your LCBO results and cocktail DB results will display. Also a map -->
+				</div>
+			</div>
+		<div class="location">
 		<div class="location wrapper">
 			<form action="" class="place">
 				<input type="text" class="placeInput" placeholder="Where are you?">
@@ -34,6 +70,21 @@
 			<div class="liquorChoice tequila">Tequia</div>
 		</div>
 
+		<div class="type wrapper">
+			<form action="select" class="typeOfCocktail">
+				<select name="cocktailOption" id="" class="cocktailOption">
+					<option>please select</option>
+					<option value="rum">rum</option>
+					<option value="whiskey">whiskey</option>
+					<option value="gin">gin</option>
+					<option value="blimblam">liqueurs</option>
+					<option value="wine">wine</option>
+					<option value="vodka">vodka</option>
+					<option value="tequila">tequila</option>
+				</select>
+			</form>
+		</div>
+
 		<div class="cocktailResults">
 			<!-- this is where the stuff will be populated form the cocktail DB -->
 
@@ -42,11 +93,7 @@
 		<div class="lcboResults wrapper">
 			<!-- this is where the listings from the LCBO will be populated -->
 			<form action="submit" class="whatBooze">
-				<input type="" class="inventoryChoice">
-			</form>
-		</div>
-
-		<div class="yourMatch">
+				<input type="" class="inventoryChoice" placeholder="what type of booze do y"yourMatch">
 			<!-- this is where the final match of your LCBO results and cocktail DB results will display. Also a map -->
 		</div>
 	</section>
