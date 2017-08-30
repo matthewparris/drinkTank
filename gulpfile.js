@@ -17,7 +17,7 @@ gulp.task('scripts', () => {
 		.pipe(babel({
 			presets: ['es2015']
 		}))
-		.pipe(gulp.dest('.public/scripts/'))
+		.pipe(gulp.dest('./public/scripts/'))
 });
 
 // a task to watch all of my other tasks
