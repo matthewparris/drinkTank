@@ -1,0 +1,21 @@
+.theApp {
+	height: 100vh
+}
+
+.absolute{
+	height: 100vh;
+	position: relative;
+}
+
+.theAppDetails{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	right: 50%;
+	bottom: 50%;
+	transform: translateY(-50%, -50%);
+}
+
+.liquorChoice{
+	border: 1px 
+}

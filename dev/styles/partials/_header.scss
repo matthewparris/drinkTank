@@ -1,7 +1,42 @@
 header {
-	background: url(../assets/background.jpg);
+	background-image: linear-gradient(rgba(0,0,0, 0.10), rgba(0,0,0,0.40)), url(../../../dev/assets/background.jpg);
 	height: 100vh;
-	font-size: 100px;
-	color: white
+	background-size: cover;
 }
 
+h1 {
+	color: rgba(225, 225, 225, 0.9);
+	font-size: 120px;
+	font-family: 'Abril Fatface', cursive;
+	width: 50%;
+	margin: 0;
+	margin-bottom: 50px;
+	letter-spacing: 3px;
+}
+
+a {
+	color: rgba(225, 225, 225, 0.9);
+	border: 1px solid white;
+	padding: 15px 20px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	transition: all 0.3s;
+}
+
+a:hover {
+	background: rgba(159, 53, 24, 0.8);
+	border: 1px solid rgba(159, 53, 24, 0.8);
+
+}
+
+.relative {
+	height: 50vh;
+	position: relative
+}
+
+.content {
+
+	position: absolute;
+	top: 50%;
+	transform: translateY(0, -50%);
+}
