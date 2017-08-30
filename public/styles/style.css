@@ -142,6 +142,19 @@ body {
 img {
   max-width: 100%; }
 
+<<<<<<< HEAD
+
+.headerNav {
+  display: flex; }
+
+.logo img {
+  width: 200px; }
+
+.nav {
+  display: flex; }
+
+=======
+>>>>>>> 07b9d77d5c71bf23ddbf745b056a446469e03bef
 li {
   list-style: none; }
 
@@ -151,3 +164,7 @@ a {
 header {
   background: url(../assets/background.jpg);
   height: 100vh; }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 07b9d77d5c71bf23ddbf745b056a446469e03bef
