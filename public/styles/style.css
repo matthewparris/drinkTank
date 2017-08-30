@@ -132,9 +132,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.container {
+body {
+  font-family: 'Open Sans', sans-serif; }
+
+.wrapper {
   max-width: 900px;
   margin: 0 auto; }
-
-body {
-  background: darkcyan; }
