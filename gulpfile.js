@@ -6,22 +6,14 @@ const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
-// a task to compile our sass
-gulp.task('styles', () => {
-	return gulp.src('./dev/styles/**/*.scss')
-	   .pipe(sass().on('error', sass.logError))
-	   .pipe(concat('style.css'))
-	   .pipe(gulp.dest('./public/styles/'))
-});
-
 gulp.task('browser-sync', () => {
   browserSync.init({
     server: '.'  
   })
 });
 
-//  a task to compile our javascript
 
+// a task to compile our sass
 gulp.task('styles', () => {
   return gulp.src('./dev/styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -31,6 +23,7 @@ gulp.task('styles', () => {
     .pipe(reload({stream: true}));
 });
 
+//  a task to compile our javascript
 gulp.task('scripts', () => {
 	return gulp.src('./dev/scripts/main.js')
 		.pipe(babel({
@@ -41,7 +34,6 @@ gulp.task('scripts', () => {
 });
 
 // a task to watch all of my other tasks
-
 gulp.task('watch', () => {
 
 	return gulp.watch('./dev/styles/**/*.scss', ['styles']);
@@ -49,4 +41,4 @@ gulp.task('watch', () => {
 	gulp.watch('*.html', reload);
 });
 
-gulp.task('default', ['styles', 'scripts', 'watch']);
+gulp.task('default', ['browser-sync','styles', 'scripts', 'watch']);
