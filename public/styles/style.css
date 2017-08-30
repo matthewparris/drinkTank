@@ -138,3 +138,15 @@ body {
 .wrapper {
   max-width: 900px;
   margin: 0 auto; }
+
+img {
+  max-width: 100%; }
+
+.headerNav {
+  display: flex; }
+
+.logo img {
+  width: 200px; }
+
+.nav {
+  display: flex; }
