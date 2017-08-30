@@ -3,14 +3,23 @@
 
 body{
 	font-family: 'Open Sans', sans-serif;
+	background: blue;
 }
 
 .wrapper{
-	max-width: 900px;
+	max-width: 1050px;
 	margin: 0 auto;
 }
 
 img{
 	max-width: 100%;
+}
+
+li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
 }
 

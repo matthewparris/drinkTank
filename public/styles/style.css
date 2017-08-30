@@ -92,12 +92,12 @@ button[disabled], input[disabled] {
   cursor: default; }
 
 input[type=checkbox], input[type=radio] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0; }
 
 input[type=search] {
   -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box; }
 
@@ -128,25 +128,26 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   height: 0; }
 
 * {
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 body {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background: blue; }
 
 .wrapper {
-  max-width: 900px;
+  max-width: 1050px;
   margin: 0 auto; }
 
 img {
   max-width: 100%; }
 
-.headerNav {
-  display: flex; }
+li {
+  list-style: none; }
 
-.logo img {
-  width: 200px; }
+a {
+  text-decoration: none; }
 
-.nav {
-  display: flex; }
+header {
+  background: url(../assets/background.jpg);
+  height: 100vh; }
