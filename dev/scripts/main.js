@@ -68,8 +68,9 @@ cocktailApp.drinksApi = function(alcohol) {
 		method: 'GET',
 		datatype: 'json'
 	}).then(function(res){
-		var drinkResult= res.drinks;
+		var drinkResult = res.drinks;
 		console.log(drinkResult);
+		cocktailApp.display(drinkResult);
 	});
 
 }
@@ -77,10 +78,29 @@ cocktailApp.drinksApi = function(alcohol) {
 cocktailApp.getCocktailType = function () {
 	$('form.typeOfCocktail').on('change', function(e){
 		e.preventDefault();
+
 		cocktailApp.drinksApi($('select[name=cocktailOption]').val());
 		// console.log(alcohol);
+
 	})
 }
+
+cocktailApp.display = function(cocktails) {
+	console.log(cocktails);
+	cocktails.forEach(function(cocktail) {
+		$('.cocktailResults').append(
+			`<div class ='cocktailResultsItem'> 
+				<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
+				<img class = 'resultsImage' src="${cocktail.strDrinkThumb}">
+			</div>`
+			)
+	});
+	// for (let item in cocktails) {
+	// 	console.log(cocktails[item].strDrink);
+
+	// }
+}
+
 
 
 cocktailApp.getCocktailType();
