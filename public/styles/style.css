@@ -132,10 +132,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 body {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background-color: purple; }
 
 .wrapper {
-  max-width: 900px;
+  max-width: 1050px;
   margin: 0 auto; }
 
 img {
@@ -147,11 +148,6 @@ li {
 a {
   text-decoration: none; }
 
-.headerNav {
-  float: left; }
-
-.nav {
-  float: left; }
-
 header {
-  background-color: lightblue; }
+  background: url(../assets/background.jpg);
+  height: 100vh; }
