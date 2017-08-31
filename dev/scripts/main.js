@@ -80,9 +80,7 @@ cocktailApp.getCocktailType = function () {
 		e.preventDefault();
 		console.log($('input[name="alchohol"]:checked').val());
 		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val());
-		// console.log(alcohol);
-
-	})
+	});
 }
 
 cocktailApp.display = function(cocktails) {
@@ -92,22 +90,36 @@ cocktailApp.display = function(cocktails) {
 			$('.cocktailResults').append(
 				`<div class ='cocktailResultsItem'> 
 					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
-					<a id = "giveMeRecipe"><img class = 'resultsImage' src="${cocktail.strDrinkThumb}"></a>
+					<img class = 'resultsImage' src="${cocktail.strDrinkThumb}">
 				</div>`
-				)
+			)
+		}
+		else {
+			$('.cocktailResults').append(
+				`<div class ='cocktailResultsItem'> 
+					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
+					<img class = 'resultsImage' src="./dev/assets/imageComingSoon.jpg">
+				</div>`
+			)
 		}
 	});
 }
 
-cocktailApp.userChoosesCocktail = () => {
-	$('#giveMeRecipe').click((e) => {
-		e.preventDefault();
-		console.log('so neat');
+cocktailApp.usersChoice = function() {
+	$('.typeOfLiquor').on('click', 'label.liquorChoice', function(){
+		console.log('wow so super neat');
+		$(this).siblings().hide();
+	});
+
+
+	$('.cocktailResults').on('click', '.cocktailResultsItem', function(){
+		console.log('lol neat');
+		$(this).siblings().hide();
 	});
 }
 
 
-
+cocktailApp.usersChoice();
 cocktailApp.getCocktailType();
 cocktailApp.getLocation();
 cocktailApp.lcboApiGetBoozeType();
