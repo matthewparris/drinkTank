@@ -88,17 +88,22 @@ cocktailApp.getCocktailType = function () {
 cocktailApp.display = function(cocktails) {
 	console.log(cocktails);
 	cocktails.forEach(function(cocktail) {
-		$('.cocktailResults').append(
-			`<div class ='cocktailResultsItem'> 
-				<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
-				<img class = 'resultsImage' src="${cocktail.strDrinkThumb}">
-			</div>`
-			)
+		if (cocktail.strDrinkThumb !== null){
+			$('.cocktailResults').append(
+				`<div class ='cocktailResultsItem'> 
+					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
+					<img class = 'resultsImage' src="${cocktail.strDrinkThumb}">
+				</div>`
+				)
+		}
 	});
-	// for (let item in cocktails) {
-	// 	console.log(cocktails[item].strDrink);
+}
 
-	// }
+cocktailApp.userChoosesCocktail = () => {
+	$('.cocktailResultsItem').on('click', (e) => {
+		e.preventDefault();
+		
+	})
 }
 
 
