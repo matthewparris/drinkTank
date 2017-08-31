@@ -22,9 +22,18 @@
 	<section class="theApp partOne" id="partOne">
 		<div class="absolute">
 			<div class="wrapper theAppDetails">
+<!-- 				<h2>First off, where are you?</h2>
 				<form action="" class="place">
-					<input type="text" class="placeInput" placeholder="Where are you?">
-				</form>
+					<input type="text" class="placeInput" placeholder="">
+					<input type="submit" name="submit" class="submitInput">
+				</form> -->
+				<div class="inputField clearfix">
+					<h1 class="inputPlaceholder">First off, where are you?</h1>
+					<form action="" class="place">
+					    <input type="text" id="city" class="my-input" name="field" placeholder="Search For a City" tabindex="1" autocomplete="off">
+					   <input type="button" id="submit" value="Search">
+					</form>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -46,13 +55,6 @@
 					<label class="liquorChoice" for="wine">Wine</label>
 					<input name="alchohol" value="wine" id="wine" type="checkbox">
 				</form>
-			</div>
-		</div>
-	</section>
-
-	<section class="theApp partThree" id="partThree">
-		<div class="absolute">
-			<div class="wrapper theAppDetails">
 				<div class="drinkResults">
 					<div class="cocktailResults">
 						<!-- this is where the stuff will be populated form the cocktail DB -->
@@ -88,7 +90,7 @@
 				</div>
 
 				<div class="copyRight">
-					<p>Copyright Copper Pot Designs 2017</p>
+					<p> © Copyright Copper Pot Designs 2017</p>
 				</div>
 			</div>
 		</div>

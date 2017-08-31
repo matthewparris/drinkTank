@@ -6,7 +6,7 @@ header {
 
 h1 {
 	color: rgba(225, 225, 225, 0.9);
-	font-size: 120px;
+	font-size: 110px;
 	font-family: 'Abril Fatface', cursive;
 	width: 50%;
 	margin: 0;
@@ -14,7 +14,7 @@ h1 {
 	letter-spacing: 3px;
 }
 
-a {
+header a {
 	color: rgba(225, 225, 225, 0.9);
 	border: 1px solid white;
 	padding: 15px 20px;
@@ -23,10 +23,9 @@ a {
 	transition: all 0.3s;
 }
 
-a:hover {
-	background: rgba(159, 53, 24, 0.8);
-	border: 1px solid rgba(159, 53, 24, 0.8);
-
+header a:hover {
+	background: rgba(199, 62, 29, 0.8);
+	border: 1px solid rgba(199, 62, 29, 0.8);
 }
 
 .relative {

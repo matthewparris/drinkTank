@@ -1,9 +1,12 @@
 .theApp {
-	background: #f7f7f7;
+	background: rgba(241, 143, 1, 0.8);
+	color: rgba(17, 20, 27, 1);
+	letter-spacing: 2px;
+	text-align: center;
 }
 
 .absolute{
-	height: 100vh;
+	min-height: 100vh;
 	position: relative;
 }
 
@@ -15,15 +18,36 @@
 	transform: translate(-50%, -50%);
 }
 
-.place{
-	margin-bottom: 3%;
-	text-align: center;
-}
+// .inputField{
+// 	margin-bottom: 3%;
+// 	text-align: center;
+// }
 
-.placeInput{
-	padding: 20px;
-	width: 60%;
-}
+// .my-input{
+// 	padding: 20px;
+// 	width: 60%;
+// }
+
+// .submitInput {
+// 	text-transform: uppercase;
+// 	text-decoration: none;
+// 	padding: 17px 0px;
+// 	text-align: center;
+// 	font-size: 1rem;
+// 	letter-spacing: 2px;
+// 	color: rgba(17, 20, 27, 1);
+// 	background: #f7f7f7;
+// 	border: 1px solid rgba(17, 20, 27, 1);
+// 	display: block;
+// 	margin: 0 auto;
+// 	width: 240px;
+// 	transition: all .3s;
+// }
+
+// .submitInput:hover {
+// 	background: rgba(199, 62, 29, 0.8);
+// 	border: 1px solid rgba(199, 62, 29, 0.8);
+// }
 
 .typeOfLiquor{
 	float: left;
@@ -42,10 +66,9 @@
 
 .liquorChoice{
 	float: left;
-	width: calc((100% / 7) - 13px);
+	width: calc((100% / 6) - 13px);
 	margin: 13px 13px 13px 0;
 	display: block;
-	color: #020203;
 	border: 1px solid #020203;
 	border-radius: 10px;
 	text-align: center;
@@ -76,3 +99,74 @@
 	text-align: center;
 }
 
+h2 {
+	font-family: "Abril Fatface"
+}
+
+.inputField {
+  position: relative;
+  margin-right: 2vw;
+  border-bottom: 1px solid white;
+  padding-bottom: 2vh;
+  width: 700px; 
+  margin: 0 auto;
+}
+
+.inputField .inputPlaceholder {
+    bottom: 0;
+    left: 0;
+    font-size: 50px;
+    transition: all 0.3s;
+    float: left; 
+    width: 100%;
+}
+ 
+ .inputField #city {
+    background-color: transparent;
+    border: none;
+    height: 50px;
+    width: 90%;
+    color: white;
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-weight: 200;
+    float: left; }
+    .inputField #city::-webkit-input-placeholder {
+      /* WebKit, Blink, Edge */
+      color: #fff;
+      opacity: 0; }
+      .inputField #city[type=text]:focus {
+      outline: none; }
+
+    .inputField #submit {
+      width: 50px;
+      height: 50px;
+      text-indent: -100000px;
+      border: none;
+      background-color: transparent;
+      float: right;
+      display: inline-block;
+      background-image: url(../../dev/assets/search.png);
+      background-size: 40px;
+      background-repeat: no-repeat;
+      background-position: center center; }
+
+.cocktailResultsItem{
+	float: left;
+	width: calc((100% / 3) - 13px);
+	margin: 13px 13px 13px 0;
+	text-align: center;
+	border: 1px solid white;
+	padding: 15px 20px;
+	background: #fff;
+	
+	
+}
+
+.cocktailResultsItem:hover{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+a#giveMeRecipe {
+	display: block;
+}
