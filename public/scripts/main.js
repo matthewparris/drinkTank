@@ -60,5 +60,40 @@ cocktailApp.getLocation = function () {
 	});
 };
 
+// cocktailApp.drinksApiKey = '6623';
+
+cocktailApp.drinksApi = function (alcohol) {
+	$.ajax({
+		url: 'http://www.thecocktaildb.com/api/json/v1/6623/filter.php?i=' + alcohol,
+		method: 'GET',
+		datatype: 'json'
+	}).then(function (res) {
+		var drinkResult = res.drinks;
+		console.log(drinkResult);
+		cocktailApp.display(drinkResult);
+	});
+};
+
+cocktailApp.getCocktailType = function () {
+	$('form.typeOfCocktail').on('change', function (e) {
+		e.preventDefault();
+
+		cocktailApp.drinksApi($('select[name=cocktailOption]').val());
+		// console.log(alcohol);
+	});
+};
+
+cocktailApp.display = function (cocktails) {
+	console.log(cocktails);
+	cocktails.forEach(function (cocktail) {
+		$('.cocktailResults').append('<div class =\'cocktailResultsItem\'> \n\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t<img class = \'resultsImage\' src="' + cocktail.strDrinkThumb + '">\n\t\t\t</div>');
+	});
+	// for (let item in cocktails) {
+	// 	console.log(cocktails[item].strDrink);
+
+	// }
+};
+
+cocktailApp.getCocktailType();
 cocktailApp.getLocation();
 cocktailApp.lcboApiGetBoozeType();
