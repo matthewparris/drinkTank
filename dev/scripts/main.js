@@ -121,12 +121,6 @@ cocktailApp.display = function(cocktails) {
 		var drinkId = $(this).data('id');
 		console.log(drinkId);
 		cocktailApp.drinksId(drinkId);
-		$('.cocktailResults').append(`
-				<div class ='cocktailResultsItem'>
-					<p class="recipe">${cocktail.strIngredient1}</p>
-					<p class="recipe">${strIngredient2}</p>
-				</div>
-			`)
 	});
 }
 
