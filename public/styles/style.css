@@ -217,7 +217,7 @@ a:hover {
 
 .liquorChoice {
   float: left;
-  width: calc((100% / 4) - 13px);
+  width: calc((100% / 7) - 13px);
   margin: 13px 13px 13px 0;
   display: block;
   color: black;
@@ -233,9 +233,6 @@ a:hover {
 .liquorChoice:hover {
   background: rgba(159, 53, 24, 0.8);
   border: 1px solid rgba(159, 53, 24, 0.8); }
-
-.wine, .vodka, .tequila {
-  width: calc((100% / 3) - 13px); }
 
 .drinkResults {
   position: relative; }
