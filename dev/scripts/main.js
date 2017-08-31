@@ -85,7 +85,18 @@ cocktailApp.drinksApi = function(alcohol) {
 		console.log(drinkResult);
 		cocktailApp.display(drinkResult);
 	});
+}
 
+cocktailApp.drinksId = function(drinkId){
+	$.ajax({
+		url: `http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`,
+		method: 'GET',
+		datatype: 'json',
+	}).then(function(res){
+		var drinkRecipe = res.drinks;
+		console.log(drinkRecipe);
+		cocktailApp.display(drinkRecipe);
+	});
 }
 
 cocktailApp.getCocktailType = function () {
@@ -101,20 +112,34 @@ cocktailApp.display = function(cocktails) {
 	cocktails.forEach(function(cocktail) {
 		if (cocktail.strDrinkThumb !== null){
 			$('.cocktailResults').append(
-				`<div class ='cocktailResultsItem'> 
-					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
+				`<div class ='cocktailResultsItem' data-id=${cocktail.idDrink}>
 					<img class = 'resultsImage' src="${cocktail.strDrinkThumb}">
+					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
 				</div>`
 			)
 		}
 		else {
 			$('.cocktailResults').append(
-				`<div class ='cocktailResultsItem'> 
-					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
+				`<div class ='cocktailResultsItem' data-id=${cocktail.idDrink}> 
 					<img class = 'resultsImage' src="./dev/assets/imageComingSoon.jpg">
+					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
 				</div>`
 			)
 		}
+	});
+
+	$('.cocktailResults').on('click', '.cocktailResultsItem', function(){
+		console.log('lol neat');
+		$(this).siblings().hide();
+		var drinkId = $(this).data('id');
+		console.log(drinkId);
+		cocktailApp.drinksId(drinkId);
+		$('.cocktailResults').append(`
+				<div class ='cocktailResultsItem'>
+					<p class="recipe">${cocktail.strIngredient1}</p>
+					<p class="recipe">${strIngredient2}</p>
+				</div>
+			`)
 	});
 }
 
@@ -125,10 +150,11 @@ cocktailApp.usersChoice = function() {
 	});
 
 
-	$('.cocktailResults').on('click', '.cocktailResultsItem', function(){
-		console.log('lol neat');
-		$(this).siblings().hide();
-	});
+	// $('.cocktailResults').on('click', '.cocktailResultsItem', function(){
+	// 	console.log('lol neat');
+	// 	$(this).siblings().hide();
+	// 	console.log(drinkId);
+	// });
 }
 
 
