@@ -6,6 +6,10 @@ var cocktailApp = {}
 
 cocktailApp.lcboApiKey = 'MDpkMDI1ZmE1Mi04YzM4LTExZTctOTEzNi04ZjUwZWNlZjYzZDk6YWc5TmJBN2pJcHJROFJSTWhMMHZQejVhbWJydVdUdHdWamdP';
 
+function displayNext (elementClass) {
+  return $(elementClass).css('display', 'static');
+}
+
 cocktailApp.lcboApiGetInventory = function(query) {
 	$.ajax({
 		url: 'https://lcboapi.com/products',
@@ -58,6 +62,15 @@ cocktailApp.getLocation = function (){
 		e.preventDefault();
 		cocktailApp.lcboApiGetLocation($('input.placeInput').val())
 	})
+
+	$('.submitInput').on('click', function() {
+		// if(hasValue('#result')) {
+		  displayNext('#partTwo');
+		  $('.partOne').css('display', 'none');
+		// } else {
+		// 	alert('Please complete the form.')
+		// }
+	});
 }
 
 // cocktailApp.drinksApiKey = '6623';

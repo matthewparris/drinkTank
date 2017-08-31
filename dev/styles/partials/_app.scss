@@ -1,9 +1,12 @@
 .theApp {
 	background: #f7f7f7;
+	color: rgba(17, 20, 27, 1);
+	letter-spacing: 2px;
+	text-align: center;
 }
 
 .absolute{
-	height: 100vh;
+	min-height: 100vh;
 	position: relative;
 }
 
@@ -25,6 +28,27 @@
 	width: 60%;
 }
 
+.submitInput {
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 17px 0px;
+	text-align: center;
+	font-size: 1rem;
+	letter-spacing: 2px;
+	color: rgba(17, 20, 27, 1);
+	background: #f7f7f7;
+	border: 1px solid rgba(17, 20, 27, 1);
+	display: block;
+	margin: 0 auto;
+	width: 240px;
+	transition: all .3s;
+}
+
+.submitInput:hover {
+	background: rgba(159, 53, 24, 0.8);
+	border: 1px solid rgba(159, 53, 24, 0.8);
+}
+
 .typeOfLiquor{
 	float: left;
 	width: 100%;
@@ -42,10 +66,9 @@
 
 .liquorChoice{
 	float: left;
-	width: calc((100% / 7) - 13px);
+	width: calc((100% / 6) - 13px);
 	margin: 13px 13px 13px 0;
 	display: block;
-	color: #020203;
 	border: 1px solid #020203;
 	border-radius: 10px;
 	text-align: center;
@@ -76,3 +99,6 @@
 	text-align: center;
 }
 
+h2 {
+	font-family: "Abril Fatface"
+}
