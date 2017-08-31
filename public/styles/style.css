@@ -162,7 +162,7 @@ h1 {
   margin-bottom: 50px;
   letter-spacing: 3px; }
 
-a {
+header a {
   color: rgba(225, 225, 225, 0.9);
   border: 1px solid white;
   padding: 15px 20px;
@@ -171,7 +171,7 @@ a {
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
 
-a:hover {
+header a:hover {
   background: rgba(159, 53, 24, 0.8);
   border: 1px solid rgba(159, 53, 24, 0.8); }
 
@@ -250,16 +250,36 @@ a:hover {
   margin: 0 auto;
   text-align: center; }
 
+.cocktailResultsItem {
+  float: left;
+  width: calc((100% / 3) - 13px);
+  margin: 13px 13px 13px 0;
+  text-align: center;
+  border: 1px solid white;
+  padding: 15px 20px;
+  background: #fff; }
+
+.cocktailResultsItem:hover {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+a#giveMeRecipe {
+  display: block; }
+
 footer {
   width: 100%;
   background: black;
   color: white;
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 50px; }
+  padding-top: 30px;
+  padding-bottom: 15px; }
 
 .footerText h3 {
-  font-size: 20px; }
+  font-size: 20px;
+  margin-bottom: 30px; }
+
+.social {
+  margin-bottom: 30px; }
 
 .social i {
   color: white;
@@ -270,13 +290,11 @@ footer {
   height: 42px;
   line-height: 40px; }
 
-.copyRight {
-  text-align: center;
-  position: relative;
-  padding-left: 30px; }
-  .copyRight::before {
-    content: "\f1f9";
-    font-family: FontAwesome;
-    display: block;
-    position: absolute;
-    left: 0; }
+.fa-twitter:hover {
+  background: #4099FF; }
+
+.fa-facebook:hover {
+  background: #3b5998; }
+
+.fa-instagram:hover {
+  background: linear-gradient(#400080, transparent), linear-gradient(110deg, #d047d1, #ff0000, #ffff00); }

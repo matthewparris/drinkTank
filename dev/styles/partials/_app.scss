@@ -76,3 +76,33 @@
 	text-align: center;
 }
 
+
+.cocktailResultsItem{
+	float: left;
+	width: calc((100% / 3) - 13px);
+	margin: 13px 13px 13px 0;
+	text-align: center;
+	border: 1px solid white;
+	padding: 15px 20px;
+	background: #fff;
+	
+	
+}
+
+.cocktailResultsItem:hover{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+a#giveMeRecipe {
+	display: block;
+}
+
+// .resultsItemTitle h3{
+// 	text-align: center;
+// }
+
+// .resultsImage{
+// 	float: left;
+// 	width: calc(100% / 3);
+// }
+
