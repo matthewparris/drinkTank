@@ -25,6 +25,9 @@
 	float: left;
 	width: 100%;
 	margin-bottom: 3%;
+	input {
+		display: none;
+	}
 }
 
 .type{
@@ -52,6 +55,8 @@
 	background: rgba(159, 53, 24, 0.8);
 	border: 1px solid rgba(159, 53, 24, 0.8);
 }
+
+
 
 .drinkResults{
 	position: relative;
