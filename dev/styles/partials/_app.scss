@@ -1,3 +1,7 @@
+.theApp {
+	background: #f7f7f7;
+}
+
 .absolute{
 	height: 100vh;
 	position: relative;
@@ -41,8 +45,8 @@
 	width: calc((100% / 7) - 13px);
 	margin: 13px 13px 13px 0;
 	display: block;
-	color: black;
-	border: 1px solid black;
+	color: #020203;
+	border: 1px solid #020203;
 	border-radius: 10px;
 	text-align: center;
 	padding: 30px 20px;

@@ -135,7 +135,7 @@ body {
   font-family: 'Open Sans', sans-serif; }
 
 .wrapper {
-  max-width: 1050px;
+  max-width: 1180px;
   margin: 0 auto; }
 
 img {
@@ -185,6 +185,9 @@ a:hover {
   -webkit-transform: translateY(0, -50%);
           transform: translateY(0, -50%); }
 
+.theApp {
+  background: #f7f7f7; }
+
 .absolute {
   height: 100vh;
   position: relative; }
@@ -222,8 +225,8 @@ a:hover {
   width: calc((100% / 7) - 13px);
   margin: 13px 13px 13px 0;
   display: block;
-  color: black;
-  border: 1px solid black;
+  color: #020203;
+  border: 1px solid #020203;
   border-radius: 10px;
   text-align: center;
   padding: 30px 20px;
