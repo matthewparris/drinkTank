@@ -1,21 +1,73 @@
-.theApp {
-	height: 100vh
-}
-
 .absolute{
 	height: 100vh;
 	position: relative;
 }
 
 .theAppDetails{
+	width: 100%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	right: 50%;
-	bottom: 50%;
-	transform: translateY(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.place{
+	margin-bottom: 3%;
+	text-align: center;
+}
+
+.placeInput{
+	padding: 20px;
+	width: 60%;
+}
+
+.typeOfLiquor{
+	float: left;
+	width: 100%;
+	margin-bottom: 3%;
+}
+
+.type{
+	clear: both;
+	text-align: center;
+	margin-bottom: 3%;
 }
 
 .liquorChoice{
-	border: 1px 
+	float: left;
+	width: calc((100% / 4) - 13px);
+	margin: 13px 13px 13px 0;
+	display: block;
+	color: black;
+	border: 1px solid black;
+	border-radius: 10px;
+	text-align: center;
+	padding: 30px 20px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	transition: all 0.3s;
 }
+
+.liquorChoice:hover{
+	background: rgba(159, 53, 24, 0.8);
+	border: 1px solid rgba(159, 53, 24, 0.8);
+}
+
+.wine, .vodka, .tequila{
+	width: calc((100% / 3) - 13px);
+}
+
+.drinkResults{
+	position: relative;
+}
+
+.cocktailResults, .lcboResults, .whatBooze{
+	position: absolute;
+}
+
+.inventoryChoice{
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
