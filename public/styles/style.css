@@ -212,6 +212,8 @@ a:hover {
   float: left;
   width: 100%;
   margin-bottom: 3%; }
+  .typeOfLiquor input {
+    display: none; }
 
 .type {
   clear: both;

@@ -76,10 +76,10 @@ cocktailApp.drinksApi = function(alcohol) {
 }
 
 cocktailApp.getCocktailType = function () {
-	$('form.typeOfCocktail').on('change', function(e){
+	$('.typeOfLiquor').on('change', function(e){
 		e.preventDefault();
-
-		cocktailApp.drinksApi($('select[name=cocktailOption]').val());
+		console.log($('input[name="alchohol"]:checked').val());
+		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val());
 		// console.log(alcohol);
 
 	})
@@ -92,7 +92,7 @@ cocktailApp.display = function(cocktails) {
 			$('.cocktailResults').append(
 				`<div class ='cocktailResultsItem'> 
 					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
-					<img class = 'resultsImage' src="${cocktail.strDrinkThumb}">
+					<a id = "giveMeRecipe"><img class = 'resultsImage' src="${cocktail.strDrinkThumb}"></a>
 				</div>`
 				)
 		}
@@ -100,10 +100,10 @@ cocktailApp.display = function(cocktails) {
 }
 
 cocktailApp.userChoosesCocktail = () => {
-	$('.cocktailResultsItem').on('click', (e) => {
+	$('#giveMeRecipe').click((e) => {
 		e.preventDefault();
-		
-	})
+		console.log('so neat');
+	});
 }
 
 

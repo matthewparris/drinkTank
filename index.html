@@ -32,15 +32,20 @@
 	<section class="theApp partTwo" id="partTwo">
 		<div class="absolute">
 			<div class="wrapper theAppDetails">
-				<div class="typeOfLiquor">
-					<div class="liquorChoice rum">Rum</div>
-					<div class="liquorChoice whiskey">Whiskey</div>
-					<div class="liquorChoice gin">Gin</div>
-					<div class="liquorChoice liquer">Liquers</div>
-					<div class="liquorChoice wine">Wine</div>
-					<div class="liquorChoice vodka">Vodka</div>
-					<div class="liquorChoice tequila">Tequila</div>
-				</div>
+				<form class="typeOfLiquor">
+					<label class="liquorChoice" for="rum">Rum</label>
+					<input name="alchohol" value="rum" id="rum" type="checkbox">
+					<label class="liquorChoice" for="whiskey">Whiskey</label>
+					<input name="alchohol" value="whiskey" id="whiskey" type="checkbox">
+					<label class="liquorChoice" for="vodka">Vodka</label>
+					<input name="alchohol" value="vodka" id="vodka" type="checkbox">
+					<label class="liquorChoice" for="gin">Gin</label>
+					<input name="alchohol" value="gin" id="gin" type="checkbox">
+					<label class="liquorChoice" for="tequila">Tequila</label>
+					<input name="alchohol" value="tequila" id="tequila" type="checkbox">
+					<label class="liquorChoice" for="wine">Wine</label>
+					<input name="alchohol" value="wine" id="wine" type="checkbox">
+				</form>
 			</div>
 		</div>
 	</section>
@@ -48,37 +53,24 @@
 	<section class="theApp partThree" id="partThree">
 		<div class="absolute">
 			<div class="wrapper theAppDetails">
-				<div class="type">
-					<form action="select" class="typeOfCocktail">
-						<select name="cocktailOption" id="" class="cocktailOption">
-							<option>please select</option>
-							<option value="rum">rum</option>
-							<option value="whiskey">whiskey</option>
-							<option value="gin">gin</option>
-							<option value="blimblam">liqueurs</option>
-							<option value="wine">wine</option>
-							<option value="vodka">vodka</option>
-							<option value="tequila">tequila</option>
-						</select>
-					</form>
+				<div class="drinkResults">
+					<div class="cocktailResults">
+						<!-- this is where the stuff will be populated form the cocktail DB -->
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
-				<div class="drinkResults">
-					<div class="cocktailResults">
-						<!-- this is where the stuff will be populated form the cocktail DB -->
-					
-					</div>
-					
-					<div class="lcboResults">
-						<!-- this is where the listings from the LCBO will be populated -->
-						<form action="submit" class="whatBooze">
-							<input type="" class="inventoryChoice" placeholder="what type of booze do yourMatch">
-						</form>
-						<!-- this is where the final match of your LCBO results and cocktail DB results will display. Also a map -->
-					</div>
+	
+	<section class="theApp partFour" id="partFour">
+		<div class="absolute">
+			<div class="wrapper theAppDetails">
+				<div class="lcboResults">
+					<!-- this is where the listings from the LCBO will be populated -->
+					<form action="submit" class="whatBooze">
+						<input type="" class="inventoryChoice" placeholder="what type of booze do yourMatch">
+					</form>
+					<!-- this is where the final match of your LCBO results and cocktail DB results will display. Also a map -->
 				</div>
 			</div>
 		</div>
