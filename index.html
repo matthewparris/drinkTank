@@ -25,17 +25,32 @@
 					<input type="text" class="placeInput" placeholder="Where are you?">
 				</form>
 
-				<div class="typeOfLiquor">
-					<div class="liquorChoice rum">Rum</div>
-					<div class="liquorChoice whiskey">Whiskey</div>
-					<div class="liquorChoice gin">Gin</div>
-					<div class="liquorChoice liquer">Liquers</div>
-					<div class="liquorChoice wine">Wine</div>
-					<div class="liquorChoice vodka">Vodka</div>
-					<div class="liquorChoice tequila">Tequila</div>
-				</div>
+	<!-- 			<div class="typeOfLiquor">
+					<div data-alch="rum" class="liquorChoice rum">Rum</div>
+					<div data-alch="rum" class="liquorChoice whiskey">Whiskey</div>
+					<div data-alch="rum" class="liquorChoice gin">Gin</div>
+					<div data-alch="rum" class="liquorChoice liquer">Liquers</div>
+					<div data-alch="rum" class="liquorChoice wine">Wine</div>
+					<div data-alch="rum" class="liquorChoice vodka">Vodka</div>
+					<div data-alch="rum" class="liquorChoice tequila">Tequila</div>
+				</div> -->
 
-				<div class="type">
+				<form class="typeOfLiquor">
+					<label class="liquorChoice" for="rum">Rum</label>
+					<input name="alchohol" value="rum" id="rum" type="checkbox">
+					<label class="liquorChoice" for="whiskey">Whiskey</label>
+					<input name="alchohol" value="whiskey" id="whiskey" type="checkbox">
+					<label class="liquorChoice" for="vodka">Vodka</label>
+					<input name="alchohol" value="vodka" id="vodka" type="checkbox">
+					<label class="liquorChoice" for="gin">Gin</label>
+					<input name="alchohol" value="gin" id="gin" type="checkbox">
+					<label class="liquorChoice" for="tequila">Tequila</label>
+					<input name="alchohol" value="tequila" id="tequila" type="checkbox">
+					<label class="liquorChoice" for="wine">Wine</label>
+					<input name="alchohol" value="wine" id="wine" type="checkbox">
+				</form>
+
+				<!-- <div class="type">
 					<form action="select" class="typeOfCocktail">
 						<select name="cocktailOption" id="" class="cocktailOption">
 							<option>please select</option>
@@ -48,7 +63,7 @@
 							<option value="tequila">tequila</option>
 						</select>
 					</form>
-				</div>
+				</div> -->
 
 				<div class="drinkResults">
 					<div class="cocktailResults">
