@@ -38,42 +38,6 @@ cocktailApp.lcboApiGetBoozeType = function(){
 		cocktailApp.lcboApiGetInventory($('input.inventoryChoice').val());
 	});
 }
-
-
-// cocktailApp.lcboApiGetLocation = function(query) {
-// 	$.ajax({
-// 		url: 'https://lcboapi.com/stores',
-// 		method: 'GET',
-// 		datatype: 'json',
-// 		data: {
-// 			per_page: 100,
-// 			q: query
-// 		},
-// 		headers: {
-// 			'Authorization': 'Token ' + cocktailApp.lcboApiKey,
-// 		}
-// 	}).then(function(res){
-// 		var location = res.result;
-// 		cocktailApp.lcboApiDisplay(location);
-// 	});
-// } 
-
-// cocktailApp.getLocation = function (){
-// 	$('form.place').on('submit', function(e){
-// 		e.preventDefault();
-// 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
-// 	})
-
-// 	$('.submitInput').on('click', function() {
-// 		// if(hasValue('#result')) {
-// 		  displayNext('#partTwo');
-// 		  $('.partOne').css('display', 'none');
-// 		// } else {
-// 		// 	alert('Please complete the form.')
-// 		// }
-// 	});
-// }
-
 cocktailApp.lcboApiGetLocation = function(query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -94,16 +58,6 @@ cocktailApp.lcboApiGetLocation = function(query) {
 } 
 
 //DYNAMIC CSS STYLES THAT MIGHT HAVE TO BE RELOCATED************
-
-$('.start').on('click', function() {
-	// if(hasValue('#result')) {
-	  displayNext('#partOne');
-	  $('header').css('display', 'none');
-	  $('#partThree').css('display', 'none');
-	// } else {
-	// 	alert('Please complete the form.')
-	// }
-});
 
 $('.start').on('click', function() {
 	// if(hasValue('#result')) {
@@ -160,8 +114,6 @@ cocktailApp.drinksId = function(drinkId){
 				// measurement.push(measure);
 			}
 		}
-		console.log(ingredients);
-		console.log(measurement);
 		ingredients.forEach(function(ingredient) {
 			$('.recipeIngredients').append(`<p>${ingredient}</p>`);
 		});
@@ -203,7 +155,7 @@ cocktailApp.display = function(cocktails) {
 		}
 	});
 
-	$('.cocktailResults').on('click', '.cocktailResultsItem', function(){
+	$('.cocktailResults').one('click', '.cocktailResultsItem', function(){
 		console.log('lol neat');
 		$(this).siblings().hide();
 		var drinkId = $(this).data('id');
@@ -236,5 +188,6 @@ cocktailApp.getCocktailType();
 cocktailApp.getLocation();
 cocktailApp.lcboApiGetBoozeType();
 cocktailApp.lcboApiGetLocation();
+cocktailApp.lcboApiDisplay();
 
 
