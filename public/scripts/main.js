@@ -95,7 +95,11 @@ cocktailApp.drinksId = function (drinkId) {
 	}).then(function (res) {
 		var drinkRecipe = res.drinks;
 		console.log(drinkRecipe);
+
 		// cocktailApp.display(drinkRecipe);
+
+		cocktailApp.display(drinkRecipe);
+
 	});
 };
 
@@ -103,7 +107,10 @@ cocktailApp.getCocktailType = function () {
 	$('.typeOfLiquor').on('change', function (e) {
 		e.preventDefault();
 		console.log($('input[name="alchohol"]:checked').val());
+
 		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val()); //gets items from cocktail DB based on user choice
+
+		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val());
 	});
 };
 
@@ -115,6 +122,7 @@ cocktailApp.display = function (cocktails) {
 		} else {
 			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '> \n\t\t\t\t\t<img class = \'resultsImage\' src="./dev/assets/imageComingSoon.jpg">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t</div>');
 		}
+
 	});
 
 	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
@@ -133,6 +141,31 @@ cocktailApp.usersChoice = function () {
 		console.log('wow so super neat');
 		$(this).siblings().hide();
 	});
+
+	});
+
+	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
+		console.log('lol neat');
+		$(this).siblings().hide();
+		var drinkId = $(this).data('id');
+		console.log(drinkId);
+		cocktailApp.drinksId(drinkId);
+		$('.cocktailResults').append('\n\t\t\t\t<div class =\'cocktailResultsItem\'>\n\t\t\t\t\t<p class="recipe">' + cocktail.strIngredient1 + '</p>\n\t\t\t\t\t<p class="recipe">' + strIngredient2 + '</p>\n\t\t\t\t</div>\n\t\t\t');
+	});
+};
+
+cocktailApp.usersChoice = function () {
+	$('.typeOfLiquor').on('click', 'label.liquorChoice', function () {
+		console.log('wow so super neat');
+		$(this).siblings().hide();
+	});
+
+	// $('.cocktailResults').on('click', '.cocktailResultsItem', function(){
+	// 	console.log('lol neat');
+	// 	$(this).siblings().hide();
+	// 	console.log(drinkId);
+	// });
+
 };
 
 cocktailApp.usersChoice();

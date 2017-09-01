@@ -38,6 +38,7 @@ cocktailApp.lcboApiGetBoozeType = function(){
 	});
 }
 
+
 // cocktailApp.lcboApiGetLocation = function(query) {
 // 	$.ajax({
 // 		url: 'https://lcboapi.com/stores',
@@ -71,6 +72,52 @@ cocktailApp.lcboApiGetBoozeType = function(){
 // 		// }
 // 	});
 // }
+=======
+cocktailApp.lcboApiGetLocation = function(query) {
+	$.ajax({
+		url: 'https://lcboapi.com/stores',
+		method: 'GET',
+		datatype: 'json',
+		data: {
+			per_page: 100,
+			q: query
+		},
+		headers: {
+			'Authorization': 'Token ' + cocktailApp.lcboApiKey,
+		}
+	}).then(function(res){
+		var location = res.result;
+		console.log(location);
+		cocktailApp.lcboApiLocationDisplay(location);
+	});
+} 
+
+$('.start').on('click', function() {
+	// if(hasValue('#result')) {
+	  displayNext('#partOne');
+	  $('header').css('display', 'none');
+	  $('#partThree').css('display', 'none');
+	// } else {
+	// 	alert('Please complete the form.')
+	// }
+});
+
+cocktailApp.getLocation = function (){
+	$('form.place').on('submit', function(e){
+		e.preventDefault();
+		cocktailApp.lcboApiGetLocation($('input.placeInput').val())
+	})
+
+	$('#submit').on('click', function() {
+		// if(hasValue('#result')) {
+		  displayNext('#partTwo');
+		  $('.partOne').css('display', 'none');
+		// } else {
+		// 	alert('Please complete the form.')
+		// }
+	});
+}
+
 
 // cocktailApp.drinksApiKey = '6623';
 
