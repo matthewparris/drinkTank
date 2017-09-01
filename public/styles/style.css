@@ -212,19 +212,11 @@ header a:hover {
   position: absolute;
   display: block;
   left: 0;
-  top: 280px;
-  width: 300px;
+  top: 0;
+  width: 60%;
   height: 100vh;
   margin: 0;
-  opacity: 0.1;
-  max-width: 1000px;
-  border: 1px solid red; }
-
-.inventoryChoice {
-	display: block;
-	margin: 0 auto;
-	text-align: center;
-}
+  opacity: 0.05; }
 
 h2 {
   font-family: "Abril Fatface";

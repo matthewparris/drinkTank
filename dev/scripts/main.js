@@ -38,41 +38,6 @@ cocktailApp.lcboApiGetBoozeType = function(){
 	});
 }
 
-
-// cocktailApp.lcboApiGetLocation = function(query) {
-// 	$.ajax({
-// 		url: 'https://lcboapi.com/stores',
-// 		method: 'GET',
-// 		datatype: 'json',
-// 		data: {
-// 			per_page: 100,
-// 			q: query
-// 		},
-// 		headers: {
-// 			'Authorization': 'Token ' + cocktailApp.lcboApiKey,
-// 		}
-// 	}).then(function(res){
-// 		var location = res.result;
-// 		cocktailApp.lcboApiDisplay(location);
-// 	});
-// } 
-
-// cocktailApp.getLocation = function (){
-// 	$('form.place').on('submit', function(e){
-// 		e.preventDefault();
-// 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
-// 	})
-
-// 	$('.submitInput').on('click', function() {
-// 		// if(hasValue('#result')) {
-// 		  displayNext('#partTwo');
-// 		  $('.partOne').css('display', 'none');
-// 		// } else {
-// 		// 	alert('Please complete the form.')
-// 		// }
-// 	});
-// }
-=======
 cocktailApp.lcboApiGetLocation = function(query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -87,8 +52,8 @@ cocktailApp.lcboApiGetLocation = function(query) {
 		}
 	}).then(function(res){
 		var location = res.result;
+		cocktailApp.getLocation(location);
 		console.log(location);
-		cocktailApp.lcboApiLocationDisplay(location);
 	});
 } 
 
@@ -105,19 +70,9 @@ $('.start').on('click', function() {
 cocktailApp.getLocation = function (){
 	$('form.place').on('submit', function(e){
 		e.preventDefault();
-		cocktailApp.lcboApiGetLocation($('input.placeInput').val())
+		cocktailApp.lcboApiGetLocation($('input.my-input').val());
 	})
-
-	$('#submit').on('click', function() {
-		// if(hasValue('#result')) {
-		  displayNext('#partTwo');
-		  $('.partOne').css('display', 'none');
-		// } else {
-		// 	alert('Please complete the form.')
-		// }
-	});
 }
-
 
 // cocktailApp.drinksApiKey = '6623';
 
@@ -128,7 +83,7 @@ cocktailApp.drinksApi = function(alcohol) {
 		datatype: 'json'
 	}).then(function(res){
 		var drinkResult = res.drinks;
-		console.log(drinkResult);
+		// console.log(drinkResult);
 		cocktailApp.display(drinkResult);
 	});
 }
@@ -141,7 +96,24 @@ cocktailApp.drinksId = function(drinkId){
 	}).then(function(res){
 		var drinkRecipe = res.drinks;
 		console.log(drinkRecipe);
-		// cocktailApp.display(drinkRecipe);
+		const ingredients = [];
+		const measurement = [];
+		for (let i = 1; i <= 15; i++) {
+			const ingredient = drinkRecipe[0][`strIngredient${i}`];
+			const measure = drinkRecipe[0][`strMeasure${i}`];
+			if (ingredient !== "") {
+				ingredients.push(ingredient, measure);
+				// measurement.push(measure);
+			}
+		}
+		console.log(ingredients);
+		console.log(measurement);
+		ingredients.forEach(function(ingredient) {
+			$('.recipeIngredients').append(`<p>${ingredient}</p>`);
+		});
+		measurement.forEach(function(measure){
+			$('span.recipeIngredient').append(`${measure}`)
+		});
 	});
 }
 
@@ -161,14 +133,17 @@ cocktailApp.display = function(cocktails) {
 				`<div class ='cocktailResultsItem' data-id=${cocktail.idDrink}>
 					<img class = 'resultsImage' src="${cocktail.strDrinkThumb}">
 					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
-				</div>`
-			)
+					<p class="recipeIngredients"> </p> <span class="recipeIngredient"></span>
+				</div>
+
+			`)
 		}
 		else {
 			$('.cocktailResults').append(
 				`<div class ='cocktailResultsItem' data-id=${cocktail.idDrink}> 
 					<img class = 'resultsImage' src="./dev/assets/imageComingSoon.jpg">
 					<h3 class = 'resultsItemTitle'>${cocktail.strDrink}</h3>
+					<p class="recipeIngredients"> </p>
 				</div>`
 			)
 		}
@@ -178,13 +153,21 @@ cocktailApp.display = function(cocktails) {
 		console.log('lol neat');
 		$(this).siblings().hide();
 		var drinkId = $(this).data('id');
-		console.log(drinkId);
+		// console.log(drinkId);
 		cocktailApp.drinksId(drinkId);
-		cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
-		$('.cocktailResultsItem').append(`
-				<h3>heyhyehye${cocktail.strIngredient1}</h3>
-			`)
+		let checkInventory = cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
+		// console.log(checkInventory);
 	});
+}
+
+cocktailApp.lcboApiDisplay = function (lcboInventory) {
+	lcboInventory.forEach(function(inventory){
+		$('.lcboResults').append(`
+			<h3> ${inventory.name} </h3>
+			<img src='${inventory.image_thumb_url}'>
+			`)
+	})
+
 }
 
 cocktailApp.usersChoice = function() {
@@ -198,5 +181,6 @@ cocktailApp.usersChoice();
 cocktailApp.getCocktailType();
 cocktailApp.getLocation();
 cocktailApp.lcboApiGetBoozeType();
+cocktailApp.lcboApiGetLocation();
 
 
