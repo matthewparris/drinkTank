@@ -105,20 +105,12 @@ $('.start').on('click', function() {
 	// }
 });
 
-$('.start').on('click', function() {
-	// if(hasValue('#result')) {
-	  displayNext('#partOne');
-	  $('header').css('display', 'none');
-	  $('#partThree').css('display', 'none');
-	// } else {
-	// 	alert('Please complete the form.')
-	// }
-});
-
 $('input[type=checkbox]').on('click', function() {
 	// if(hasValue('#result')) {
 	usersInput = $(this).val();
-	  $('.partTwoHeader').text(`${usersInput}, got it. Now here some cocktails you can make with that. `)
+	  $('.partTwoHeader').text(`${usersInput}, got it. Now here's some cocktails you can make with that. `)
+
+	$('#loadMore').css('display', 'static');
 });
 
 cocktailApp.getLocation = function (){
@@ -206,6 +198,51 @@ cocktailApp.display = function(cocktails) {
 	});
 }
 
+// cocktailApp.loadMore = () => {
+// 	$('.cocktailResultsItem').slice(0,3).show();
+// 	$('#loadMore').on('click', function (e){
+// 		e.preventDefault();
+// 		$('.cocktailResultsItem:hidden').slice(0,4).slideDown();
+
+// 		if ($('.cocktailResultsItem:hidden').length == 0) {
+// 			$('#load').fadeOut('slow');
+// 	}
+// 	$('html, body').animate({
+// 		scrollTop: $(this).offset().top
+// 	}, 1500);
+
+// 	});
+// }
+
+cocktailApp.loadMore = function () {
+    $('.cocktailResultsItem').slice(0, 3).show();
+    $('#loadMore').on('click', function(e) {
+        e.preventDefault();
+        $('.cocktailResultsItem:hidden').slice(0, 3).slideDown();
+        if ($('.cocktailResultsItem:hidden').length == 0) {
+            $('#load').fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+		$('a[href=#top]').click(function () {
+		    $('.partTwo').animate({
+		        scrollTop: 0
+		    }, 600);
+		    return false;
+		});
+
+		$(window).scroll(function () {
+		    if ($(this).scrollTop() > 50) {
+		        $('.totop a').fadeIn();
+		    } else {
+		        $('.totop a').fadeOut();
+		    }
+		});
+    });
+};
+
+
 cocktailApp.usersChoice = function() {
 	$('.typeOfLiquor').on('click', 'label.liquorChoice', function(){
 		console.log('wow so super neat');
@@ -213,9 +250,16 @@ cocktailApp.usersChoice = function() {
 	});
 }
 
-cocktailApp.usersChoice();
-cocktailApp.getCocktailType();
-cocktailApp.getLocation();
-cocktailApp.lcboApiGetBoozeType();
+cocktailApp.init = function() {
+	cocktailApp.usersChoice();
+	cocktailApp.getCocktailType();
+	cocktailApp.getLocation();
+	cocktailApp.lcboApiGetBoozeType();
+	cocktailApp.loadMore();
+	
+} 
 
 
+$(function(){
+	cocktailApp.init();
+})

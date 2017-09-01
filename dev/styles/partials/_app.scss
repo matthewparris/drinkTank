@@ -98,7 +98,9 @@ h2 {
       background-repeat: no-repeat;
       background-position: center center; }
 
+//Load MORE section
 .cocktailResultsItem{
+	display: none; 
 	float: left;
 	width: calc((100% / 3) - 13px);
 	margin: 13px 13px 13px 0;
@@ -106,7 +108,61 @@ h2 {
 	border: 1px solid white;
 	padding: 15px 20px;
 	background: #fff;
-	
+	h3{
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+}
+
+.cocktailResultsItem:nth-child(2){
+	margin-right: 0;
+}
+
+// .cocktailResultsItem > :first-child{
+// 	margin-right: 13px;
+// }
+
+// .cocktailResultsItem > :nth-child(2){
+// 	margin-right: 13px;
+// }
+
+//we need this to display dynamically after all cocktails loaded
+.totop {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    display: none;
+}
+
+#loadMore, .totop{
+	a, a:visited {
+	    color: #33739E ;
+	    text-decoration: none;
+	    display: block;
+	    margin: 10px 0;
+	}
+	a:hover {
+	    text-decoration: none;
+	}
+}
+#loadMore {
+    padding: 10px;
+    text-align: center;
+    background-color: #33739E ;
+    color: #fff;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 1px 1px #ccc;
+    // display: none;
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    -o-transition: all 600ms ease-in-out;
+}
+#loadMore:hover {
+    background-color: #fff;
+    color: #33739E ;
 }
 
 .cocktailResultsItem:hover{
@@ -181,3 +237,9 @@ h2 {
 a#giveMeRecipe {
 	display: block;
 }
+
+
+
+// .cocktailResultsItem:nth-child(3n -3){
+// 	margin-right: 13px;
+// }
