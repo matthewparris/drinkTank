@@ -218,6 +218,16 @@ header a:hover {
   margin: 0;
   opacity: 0.05; }
 
+.iconBackdropLight {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  width: 60%;
+  height: 100vh;
+  margin: 0;
+  opacity: 0.05; }
+
 h2 {
   font-family: "Abril Fatface";
   color: #fff;

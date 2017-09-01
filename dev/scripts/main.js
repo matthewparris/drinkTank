@@ -38,6 +38,41 @@ cocktailApp.lcboApiGetBoozeType = function(){
 	});
 }
 
+
+// cocktailApp.lcboApiGetLocation = function(query) {
+// 	$.ajax({
+// 		url: 'https://lcboapi.com/stores',
+// 		method: 'GET',
+// 		datatype: 'json',
+// 		data: {
+// 			per_page: 100,
+// 			q: query
+// 		},
+// 		headers: {
+// 			'Authorization': 'Token ' + cocktailApp.lcboApiKey,
+// 		}
+// 	}).then(function(res){
+// 		var location = res.result;
+// 		cocktailApp.lcboApiDisplay(location);
+// 	});
+// } 
+
+// cocktailApp.getLocation = function (){
+// 	$('form.place').on('submit', function(e){
+// 		e.preventDefault();
+// 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
+// 	})
+
+// 	$('.submitInput').on('click', function() {
+// 		// if(hasValue('#result')) {
+// 		  displayNext('#partTwo');
+// 		  $('.partOne').css('display', 'none');
+// 		// } else {
+// 		// 	alert('Please complete the form.')
+// 		// }
+// 	});
+// }
+=======
 cocktailApp.lcboApiGetLocation = function(query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -83,6 +118,7 @@ cocktailApp.getLocation = function (){
 	});
 }
 
+
 // cocktailApp.drinksApiKey = '6623';
 
 cocktailApp.drinksApi = function(alcohol) {
@@ -105,7 +141,7 @@ cocktailApp.drinksId = function(drinkId){
 	}).then(function(res){
 		var drinkRecipe = res.drinks;
 		console.log(drinkRecipe);
-		cocktailApp.display(drinkRecipe);
+		// cocktailApp.display(drinkRecipe);
 	});
 }
 
@@ -113,7 +149,7 @@ cocktailApp.getCocktailType = function () {
 	$('.typeOfLiquor').on('change', function(e){
 		e.preventDefault();
 		console.log($('input[name="alchohol"]:checked').val());
-		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val());
+		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val()); //gets items from cocktail DB based on user choice
 	});
 }
 
@@ -144,6 +180,10 @@ cocktailApp.display = function(cocktails) {
 		var drinkId = $(this).data('id');
 		console.log(drinkId);
 		cocktailApp.drinksId(drinkId);
+		cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
+		$('.cocktailResultsItem').append(`
+				<h3>heyhyehye${cocktail.strIngredient1}</h3>
+			`)
 	});
 }
 
@@ -152,15 +192,7 @@ cocktailApp.usersChoice = function() {
 		console.log('wow so super neat');
 		$(this).siblings().hide();
 	});
-
-
-	// $('.cocktailResults').on('click', '.cocktailResultsItem', function(){
-	// 	console.log('lol neat');
-	// 	$(this).siblings().hide();
-	// 	console.log(drinkId);
-	// });
 }
-
 
 cocktailApp.usersChoice();
 cocktailApp.getCocktailType();

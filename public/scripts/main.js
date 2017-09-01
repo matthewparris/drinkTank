@@ -57,13 +57,23 @@ cocktailApp.lcboApiGetLocation = function (query) {
 	});
 };
 
+$('.start').on('click', function () {
+	// if(hasValue('#result')) {
+	displayNext('#partOne');
+	$('header').css('display', 'none');
+	$('#partThree').css('display', 'none');
+	// } else {
+	// 	alert('Please complete the form.')
+	// }
+});
+
 cocktailApp.getLocation = function () {
 	$('form.place').on('submit', function (e) {
 		e.preventDefault();
 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
 	});
 
-	$('.submitInput').on('click', function () {
+	$('#submit').on('click', function () {
 		// if(hasValue('#result')) {
 		displayNext('#partTwo');
 		$('.partOne').css('display', 'none');
@@ -95,7 +105,11 @@ cocktailApp.drinksId = function (drinkId) {
 	}).then(function (res) {
 		var drinkRecipe = res.drinks;
 		console.log(drinkRecipe);
+
+		// cocktailApp.display(drinkRecipe);
+
 		cocktailApp.display(drinkRecipe);
+
 	});
 };
 
@@ -103,6 +117,9 @@ cocktailApp.getCocktailType = function () {
 	$('.typeOfLiquor').on('change', function (e) {
 		e.preventDefault();
 		console.log($('input[name="alchohol"]:checked').val());
+
+		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val()); //gets items from cocktail DB based on user choice
+
 		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val());
 	});
 };
@@ -115,6 +132,26 @@ cocktailApp.display = function (cocktails) {
 		} else {
 			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '> \n\t\t\t\t\t<img class = \'resultsImage\' src="./dev/assets/imageComingSoon.jpg">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t</div>');
 		}
+
+	});
+
+	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
+		console.log('lol neat');
+		$(this).siblings().hide();
+		var drinkId = $(this).data('id');
+		console.log(drinkId);
+		cocktailApp.drinksId(drinkId);
+		cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
+		$('.cocktailResultsItem').append('\n\t\t\t\t<h3>heyhyehye' + cocktail.strIngredient1 + '</h3>\n\t\t\t');
+	});
+};
+
+cocktailApp.usersChoice = function () {
+	$('.typeOfLiquor').on('click', 'label.liquorChoice', function () {
+		console.log('wow so super neat');
+		$(this).siblings().hide();
+	});
+
 	});
 
 	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
@@ -138,6 +175,7 @@ cocktailApp.usersChoice = function () {
 	// 	$(this).siblings().hide();
 	// 	console.log(drinkId);
 	// });
+
 };
 
 cocktailApp.usersChoice();
