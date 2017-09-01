@@ -10,6 +10,7 @@ function displayNext (elementClass) {
   return $(elementClass).css('display', 'static');
 }
 
+
 cocktailApp.lcboApiGetInventory = function(query) {
 	$.ajax({
 		url: 'https://lcboapi.com/products',
@@ -37,7 +38,6 @@ cocktailApp.lcboApiGetBoozeType = function(){
 		cocktailApp.lcboApiGetInventory($('input.inventoryChoice').val());
 	});
 }
-
 cocktailApp.lcboApiGetLocation = function(query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -57,6 +57,8 @@ cocktailApp.lcboApiGetLocation = function(query) {
 	});
 } 
 
+//DYNAMIC CSS STYLES THAT MIGHT HAVE TO BE RELOCATED************
+
 $('.start').on('click', function() {
 	// if(hasValue('#result')) {
 	  displayNext('#partOne');
@@ -65,6 +67,12 @@ $('.start').on('click', function() {
 	// } else {
 	// 	alert('Please complete the form.')
 	// }
+});
+
+$('input[type=checkbox]').on('click', function() {
+	// if(hasValue('#result')) {
+	usersInput = $(this).val();
+	  $('.partTwoHeader').text(`${usersInput}, got it. Now here some cocktails you can make with that. `)
 });
 
 cocktailApp.getLocation = function (){
@@ -106,8 +114,6 @@ cocktailApp.drinksId = function(drinkId){
 				// measurement.push(measure);
 			}
 		}
-		console.log(ingredients);
-		console.log(measurement);
 		ingredients.forEach(function(ingredient) {
 			$('.recipeIngredients').append(`<p>${ingredient}</p>`);
 		});
@@ -149,7 +155,7 @@ cocktailApp.display = function(cocktails) {
 		}
 	});
 
-	$('.cocktailResults').on('click', '.cocktailResultsItem', function(){
+	$('.cocktailResults').one('click', '.cocktailResultsItem', function(){
 		console.log('lol neat');
 		$(this).siblings().hide();
 		var drinkId = $(this).data('id');
@@ -182,5 +188,6 @@ cocktailApp.getCocktailType();
 cocktailApp.getLocation();
 cocktailApp.lcboApiGetBoozeType();
 cocktailApp.lcboApiGetLocation();
+cocktailApp.lcboApiDisplay();
 
 
