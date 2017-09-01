@@ -10,6 +10,7 @@ function displayNext (elementClass) {
   return $(elementClass).css('display', 'static');
 }
 
+
 cocktailApp.lcboApiGetInventory = function(query) {
 	$.ajax({
 		url: 'https://lcboapi.com/products',
@@ -38,6 +39,41 @@ cocktailApp.lcboApiGetBoozeType = function(){
 	});
 }
 
+
+// cocktailApp.lcboApiGetLocation = function(query) {
+// 	$.ajax({
+// 		url: 'https://lcboapi.com/stores',
+// 		method: 'GET',
+// 		datatype: 'json',
+// 		data: {
+// 			per_page: 100,
+// 			q: query
+// 		},
+// 		headers: {
+// 			'Authorization': 'Token ' + cocktailApp.lcboApiKey,
+// 		}
+// 	}).then(function(res){
+// 		var location = res.result;
+// 		cocktailApp.lcboApiDisplay(location);
+// 	});
+// } 
+
+// cocktailApp.getLocation = function (){
+// 	$('form.place').on('submit', function(e){
+// 		e.preventDefault();
+// 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
+// 	})
+
+// 	$('.submitInput').on('click', function() {
+// 		// if(hasValue('#result')) {
+// 		  displayNext('#partTwo');
+// 		  $('.partOne').css('display', 'none');
+// 		// } else {
+// 		// 	alert('Please complete the form.')
+// 		// }
+// 	});
+// }
+
 cocktailApp.lcboApiGetLocation = function(query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -57,6 +93,8 @@ cocktailApp.lcboApiGetLocation = function(query) {
 	});
 } 
 
+//DYNAMIC CSS STYLES THAT MIGHT HAVE TO BE RELOCATED************
+
 $('.start').on('click', function() {
 	// if(hasValue('#result')) {
 	  displayNext('#partOne');
@@ -65,6 +103,22 @@ $('.start').on('click', function() {
 	// } else {
 	// 	alert('Please complete the form.')
 	// }
+});
+
+$('.start').on('click', function() {
+	// if(hasValue('#result')) {
+	  displayNext('#partOne');
+	  $('header').css('display', 'none');
+	  $('#partThree').css('display', 'none');
+	// } else {
+	// 	alert('Please complete the form.')
+	// }
+});
+
+$('input[type=checkbox]').on('click', function() {
+	// if(hasValue('#result')) {
+	usersInput = $(this).val();
+	  $('.partTwoHeader').text(`${usersInput}, got it. Now here some cocktails you can make with that. `)
 });
 
 cocktailApp.getLocation = function (){
