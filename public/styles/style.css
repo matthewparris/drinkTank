@@ -132,7 +132,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 body {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background: #15181f; }
 
 .wrapper {
   max-width: 1180px;
@@ -154,7 +155,7 @@ header {
   background-size: cover; }
 
 h1 {
-  color: rgba(225, 225, 225, 0.9);
+  color: #fff;
   font-size: 110px;
   font-family: 'Abril Fatface', cursive;
   width: 50%;
@@ -163,8 +164,9 @@ h1 {
   letter-spacing: 3px; }
 
 header a {
-  color: rgba(225, 225, 225, 0.9);
-  border: 1px solid white;
+  color: #fff;
+  border: 5px solid #fff;
+  background: rgba(255, 255, 255, 0.25);
   padding: 15px 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -172,8 +174,9 @@ header a {
   transition: all 0.3s; }
 
 header a:hover {
-  background: rgba(199, 62, 29, 0.8);
-  border: 1px solid rgba(199, 62, 29, 0.8); }
+  background: #fff;
+  border: 5px solid #fff;
+  color: #362412; }
 
 .relative {
   height: 50vh;
@@ -186,10 +189,12 @@ header a:hover {
           transform: translateY(0, -50%); }
 
 .theApp {
-  background: rgba(241, 143, 1, 0.8);
-  color: #11141b;
   letter-spacing: 2px;
-  text-align: center; }
+  text-align: center;
+  position: relative; }
+
+.partOne {
+  background: #f18f01; }
 
 .absolute {
   min-height: 100vh;
@@ -203,61 +208,22 @@ header a:hover {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
 
-.typeOfLiquor {
-  float: left;
-  width: 100%;
-  margin-bottom: 3%; }
-  .typeOfLiquor input {
-    display: none; }
-
-.type {
-  clear: both;
-  text-align: center;
-  margin-bottom: 3%; }
-
 .iconBackdrop {
   position: absolute;
   display: block;
   left: 0;
-  top: 280px;
-  width: 300px;
+  top: 0;
+  width: 60%;
   height: 100vh;
   margin: 0;
-  opacity: 0.1;
-  max-width: 1000px;
-  border: 1px solid red; }
-
-.liquorChoice {
-  float: left;
-  width: calc((100% / 6) - 13px);
-  margin: 13px 13px 13px 0;
-  display: block;
-  border: 1px solid #020203;
-  border-radius: 10px;
-  text-align: center;
-  padding: 30px 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s; }
-
-.liquorChoice:hover {
-  background: rgba(159, 53, 24, 0.8);
-  border: 1px solid rgba(159, 53, 24, 0.8); }
-
-.drinkResults {
-  position: relative; }
-
-.cocktailResults, .lcboResults, .whatBooze {
-  position: absolute; }
-
-.inventoryChoice {
-  display: block;
-  margin: 0 auto;
-  text-align: center; }
+  opacity: 0.05; }
 
 h2 {
-  font-family: "Abril Fatface"; }
+  font-family: "Abril Fatface";
+  color: #fff;
+  font-size: 50px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
 
 .inputField {
   position: relative;
@@ -267,16 +233,7 @@ h2 {
   width: 700px;
   margin: 0 auto; }
 
-.inputField .inputPlaceholder {
-  bottom: 0;
-  left: 0;
-  font-size: 50px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  float: left;
-  width: 100%; }
-
-.inputField #city {
+.inputField #location {
   background-color: transparent;
   border: none;
   height: 50px;
@@ -287,12 +244,12 @@ h2 {
   font-weight: 200;
   float: left; }
 
-.inputField #city::-webkit-input-placeholder {
+.inputField #location::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: #fff;
   opacity: 0; }
 
-.inputField #city[type=text]:focus {
+.inputField #location[type=text]:focus {
   outline: none; }
 
 .inputField #submit {
@@ -320,6 +277,55 @@ h2 {
 .cocktailResultsItem:hover {
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.partTwo {
+  background: #15181f; }
+
+.liquorChoice {
+  float: left;
+  width: calc((100% / 6) - 13px);
+  margin: 13px 13px 13px 0;
+  display: block;
+  background: rgba(255, 255, 255, 0.25);
+  border: 5px solid #fff;
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+
+.liquorChoice:hover {
+  background: #fff;
+  border: 5px solid #fff;
+  color: #15181f; }
+
+.drinkResults {
+  position: relative; }
+
+.cocktailResults, .lcboResults, .whatBooze {
+  position: absolute; }
+
+.inventoryChoice {
+  display: block;
+  margin: 0 auto;
+  text-align: center; }
+
+.typeOfLiquor {
+  float: left;
+  width: 100%;
+  margin-bottom: 3%; }
+  .typeOfLiquor input {
+    display: none; }
+
+.type {
+  clear: both;
+  text-align: center;
+  margin-bottom: 3%; }
+
+.partThree {
+  background: #c73e1d; }
 
 a#giveMeRecipe {
   display: block; }
