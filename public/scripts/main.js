@@ -57,13 +57,23 @@ cocktailApp.lcboApiGetLocation = function (query) {
 	});
 };
 
+$('.start').on('click', function () {
+	// if(hasValue('#result')) {
+	displayNext('#partOne');
+	$('header').css('display', 'none');
+	$('#partThree').css('display', 'none');
+	// } else {
+	// 	alert('Please complete the form.')
+	// }
+});
+
 cocktailApp.getLocation = function () {
 	$('form.place').on('submit', function (e) {
 		e.preventDefault();
 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
 	});
 
-	$('.submitInput').on('click', function () {
+	$('#submit').on('click', function () {
 		// if(hasValue('#result')) {
 		displayNext('#partTwo');
 		$('.partOne').css('display', 'none');
