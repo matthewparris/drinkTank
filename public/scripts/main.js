@@ -38,40 +38,6 @@ cocktailApp.lcboApiGetBoozeType = function () {
 	});
 };
 
-// cocktailApp.lcboApiGetLocation = function(query) {
-// 	$.ajax({
-// 		url: 'https://lcboapi.com/stores',
-// 		method: 'GET',
-// 		datatype: 'json',
-// 		data: {
-// 			per_page: 100,
-// 			q: query
-// 		},
-// 		headers: {
-// 			'Authorization': 'Token ' + cocktailApp.lcboApiKey,
-// 		}
-// 	}).then(function(res){
-// 		var location = res.result;
-// 		cocktailApp.lcboApiDisplay(location);
-// 	});
-// } 
-
-// cocktailApp.getLocation = function (){
-// 	$('form.place').on('submit', function(e){
-// 		e.preventDefault();
-// 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
-// 	})
-
-// 	$('.submitInput').on('click', function() {
-// 		// if(hasValue('#result')) {
-// 		  displayNext('#partTwo');
-// 		  $('.partOne').css('display', 'none');
-// 		// } else {
-// 		// 	alert('Please complete the form.')
-// 		// }
-// 	});
-// }
-
 cocktailApp.lcboApiGetLocation = function (query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -86,8 +52,8 @@ cocktailApp.lcboApiGetLocation = function (query) {
 		}
 	}).then(function (res) {
 		var location = res.result;
+		cocktailApp.getLocation(location);
 		console.log(location);
-		cocktailApp.lcboApiLocationDisplay(location);
 	});
 };
 
@@ -97,7 +63,7 @@ $('.start').on('click', function () {
 	// if(hasValue('#result')) {
 	displayNext('#partOne');
 	$('header').css('display', 'none');
-	$('#partThree').css('display', 'none');
+	$('#partOnertThree').css('display', 'none');
 	// } else {
 	// 	alert('Please complete the form.')
 	// }
@@ -114,16 +80,7 @@ $('input[type=checkbox]').on('click', function () {
 cocktailApp.getLocation = function () {
 	$('form.place').on('submit', function (e) {
 		e.preventDefault();
-		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
-	});
-
-	$('#submit').on('click', function () {
-		// if(hasValue('#result')) {
-		displayNext('#partTwo');
-		$('.partOne').css('display', 'none');
-		// } else {
-		// 	alert('Please complete the form.')
-		// }
+		cocktailApp.lcboApiGetLocation($('input.my-input').val());
 	});
 };
 
@@ -136,7 +93,7 @@ cocktailApp.drinksApi = function (alcohol) {
 		datatype: 'json'
 	}).then(function (res) {
 		var drinkResult = res.drinks;
-		console.log(drinkResult);
+		// console.log(drinkResult);
 		cocktailApp.display(drinkResult);
 	});
 };
@@ -149,6 +106,22 @@ cocktailApp.drinksId = function (drinkId) {
 	}).then(function (res) {
 		var drinkRecipe = res.drinks;
 		console.log(drinkRecipe);
+		var ingredients = [];
+		var measurement = [];
+		for (var i = 1; i <= 15; i++) {
+			var ingredient = drinkRecipe[0]['strIngredient' + i];
+			var measure = drinkRecipe[0]['strMeasure' + i];
+			if (ingredient !== "") {
+				ingredients.push(ingredient, measure);
+				// measurement.push(measure);
+			}
+		}
+		ingredients.forEach(function (ingredient) {
+			$('.recipeIngredients').append('<p>' + ingredient + '</p>');
+		});
+		measurement.forEach(function (measure) {
+			$('span.recipeIngredient').append('' + measure);
+		});
 		// cocktailApp.display(drinkRecipe);
 	});
 };
@@ -165,38 +138,26 @@ cocktailApp.display = function (cocktails) {
 	console.log(cocktails);
 	cocktails.forEach(function (cocktail) {
 		if (cocktail.strDrinkThumb !== null) {
-			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '>\n\t\t\t\t\t<img class = \'resultsImage\' src="' + cocktail.strDrinkThumb + '">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t</div>');
+			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '>\n\t\t\t\t\t<img class = \'resultsImage\' src="' + cocktail.strDrinkThumb + '">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t\t<p class="recipeIngredients"> </p> <span class="recipeIngredient"></span>\n\t\t\t\t</div>\n\n\t\t\t');
 		} else {
-			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '> \n\t\t\t\t\t<img class = \'resultsImage\' src="./dev/assets/imageComingSoon.jpg">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t</div>');
+			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '> \n\t\t\t\t\t<img class = \'resultsImage\' src="./dev/assets/imageComingSoon.jpg">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t\t<p class="recipeIngredients"> </p>\n\t\t\t\t</div>');
 		}
 	});
 
-	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
+	$('.cocktailResults').one('click', '.cocktailResultsItem', function () {
 		console.log('lol neat');
 		$(this).siblings().hide();
 		var drinkId = $(this).data('id');
-		console.log(drinkId);
+		// console.log(drinkId);
 		cocktailApp.drinksId(drinkId);
-		cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
-		$('.cocktailResultsItem').append('\n\t\t\t\t<h3>heyhyehye' + cocktail.strIngredient1 + '</h3>\n\t\t\t');
+		var checkInventory = cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
+		// console.log(checkInventory);
 	});
 };
 
-// cocktailApp.loadMore = () => {
-// 	$('.cocktailResultsItem').slice(0,3).show();
-// 	$('#loadMore').on('click', function (e){
-// 		e.preventDefault();
-// 		$('.cocktailResultsItem:hidden').slice(0,4).slideDown();
-
-// 		if ($('.cocktailResultsItem:hidden').length == 0) {
-// 			$('#load').fadeOut('slow');
-// 	}
-// 	$('html, body').animate({
-// 		scrollTop: $(this).offset().top
-// 	}, 1500);
-
-// 	});
-// }
+cocktailApp.lcboApiDisplay = function (lcboInventory) {
+	lcboInventory.forEach(function (inventory) {
+		$('.lcboResults').append('\n\t\t\t<h3> ' + inventory.name + ' </h3>\n\t\t\t<img src=\'' + inventory.image_thumb_url + '\'>\n\t\t\t');
 
 cocktailApp.loadMore = function () {
 	$('.cocktailResultsItem').slice(0, 3).show();
@@ -231,6 +192,7 @@ cocktailApp.usersChoice = function () {
 		console.log('wow so super neat');
 		$(this).siblings().hide();
 	});
+
 };
 
 cocktailApp.init = function () {
@@ -244,3 +206,4 @@ cocktailApp.init = function () {
 $(function () {
 	cocktailApp.init();
 });
+
