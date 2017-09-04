@@ -37,44 +37,7 @@ cocktailApp.lcboApiGetBoozeType = function () {
 		cocktailApp.lcboApiGetInventory($('input.inventoryChoice').val());
 	});
 };
-<<<<<<< HEAD
-=======
 
-// cocktailApp.lcboApiGetLocation = function(query) {
-// 	$.ajax({
-// 		url: 'https://lcboapi.com/stores',
-// 		method: 'GET',
-// 		datatype: 'json',
-// 		data: {
-// 			per_page: 100,
-// 			q: query
-// 		},
-// 		headers: {
-// 			'Authorization': 'Token ' + cocktailApp.lcboApiKey,
-// 		}
-// 	}).then(function(res){
-// 		var location = res.result;
-// 		cocktailApp.lcboApiDisplay(location);
-// 	});
-// } 
-
-// cocktailApp.getLocation = function (){
-// 	$('form.place').on('submit', function(e){
-// 		e.preventDefault();
-// 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
-// 	})
-
-// 	$('.submitInput').on('click', function() {
-// 		// if(hasValue('#result')) {
-// 		  displayNext('#partTwo');
-// 		  $('.partOne').css('display', 'none');
-// 		// } else {
-// 		// 	alert('Please complete the form.')
-// 		// }
-// 	});
-// }
-
->>>>>>> 6db9313eca12144b73c3e868189cb24c1bbd6f48
 cocktailApp.lcboApiGetLocation = function (query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -109,13 +72,10 @@ $('.start').on('click', function () {
 $('input[type=checkbox]').on('click', function () {
 	// if(hasValue('#result')) {
 	usersInput = $(this).val();
-<<<<<<< HEAD
-	$('.partTwoHeader').text(usersInput + ', got it. Now here some cocktails you can make with that. ');
-=======
 	$('.partTwoHeader').text(usersInput + ', got it. Now here\'s some cocktails you can make with that. ');
-
 	$('#loadMore').css('display', 'static');
->>>>>>> 6db9313eca12144b73c3e868189cb24c1bbd6f48
+	$('.partTwoHeader').text(usersInput + ', got it. Now here\'s some cocktails you can make with that. ');
+	$('#loadMore').css('display', 'static');
 });
 
 cocktailApp.getLocation = function () {
@@ -147,7 +107,6 @@ cocktailApp.drinksId = function (drinkId) {
 	}).then(function (res) {
 		var drinkRecipe = res.drinks;
 		console.log(drinkRecipe);
-<<<<<<< HEAD
 		var ingredients = [];
 		var measurement = [];
 		for (var i = 1; i <= 15; i++) {
@@ -164,9 +123,6 @@ cocktailApp.drinksId = function (drinkId) {
 		measurement.forEach(function (measure) {
 			$('span.recipeIngredient').append('' + measure);
 		});
-=======
-		// cocktailApp.display(drinkRecipe);
->>>>>>> 6db9313eca12144b73c3e868189cb24c1bbd6f48
 	});
 };
 
@@ -199,26 +155,13 @@ cocktailApp.display = function (cocktails) {
 	});
 };
 
-<<<<<<< HEAD
 cocktailApp.lcboApiDisplay = function (lcboInventory) {
 	lcboInventory.forEach(function (inventory) {
 		$('.lcboResults').append('\n\t\t\t<h3> ' + inventory.name + ' </h3>\n\t\t\t<img src=\'' + inventory.image_thumb_url + '\'>\n\t\t\t');
-=======
-// cocktailApp.loadMore = () => {
-// 	$('.cocktailResultsItem').slice(0,3).show();
-// 	$('#loadMore').on('click', function (e){
-// 		e.preventDefault();
-// 		$('.cocktailResultsItem:hidden').slice(0,4).slideDown();
 
-// 		if ($('.cocktailResultsItem:hidden').length == 0) {
-// 			$('#load').fadeOut('slow');
-// 	}
-// 	$('html, body').animate({
-// 		scrollTop: $(this).offset().top
-// 	}, 1500);
-
-// 	});
-// }
+cocktailApp.lcboApiDisplay = function (lcboInventory) {
+	lcboInventory.forEach(function (inventory) {
+		$('.lcboResults').append('\n\t\t\t<h3> ' + inventory.name + ' </h3>\n\t\t\t<img src=\'' + inventory.image_thumb_url + '\'>\n\t\t\t');
 
 cocktailApp.loadMore = function () {
 	$('.cocktailResultsItem').slice(0, 3).show();
@@ -245,7 +188,6 @@ cocktailApp.loadMore = function () {
 				$('.totop a').fadeOut();
 			}
 		});
->>>>>>> 6db9313eca12144b73c3e868189cb24c1bbd6f48
 	});
 };
 
@@ -254,16 +196,6 @@ cocktailApp.usersChoice = function () {
 		console.log('wow so super neat');
 		$(this).siblings().hide();
 	});
-<<<<<<< HEAD
-};
-
-cocktailApp.usersChoice();
-cocktailApp.getCocktailType();
-cocktailApp.getLocation();
-cocktailApp.lcboApiGetBoozeType();
-cocktailApp.lcboApiGetLocation();
-cocktailApp.lcboApiDisplay();
-=======
 };
 
 cocktailApp.init = function () {
@@ -277,4 +209,3 @@ cocktailApp.init = function () {
 $(function () {
 	cocktailApp.init();
 });
->>>>>>> 6db9313eca12144b73c3e868189cb24c1bbd6f48
