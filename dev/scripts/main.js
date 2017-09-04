@@ -63,7 +63,7 @@ $('.start').on('click', function() {
 	// if(hasValue('#result')) {
 	  displayNext('#partOne');
 	  $('header').css('display', 'none');
-	  $('#partThree').css('display', 'none');
+	  $('#partOnertThree').css('display', 'none');
 	// } else {
 	// 	alert('Please complete the form.')
 	// }
@@ -172,7 +172,7 @@ cocktailApp.lcboApiDisplay = function (lcboInventory) {
 			<h3> ${inventory.name} </h3>
 			<img src='${inventory.image_thumb_url}'>
 			`)
-	})
+	});
 
 }
 

@@ -37,7 +37,6 @@ cocktailApp.lcboApiGetBoozeType = function () {
 		cocktailApp.lcboApiGetInventory($('input.inventoryChoice').val());
 	});
 };
-
 cocktailApp.lcboApiGetLocation = function (query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -52,34 +51,33 @@ cocktailApp.lcboApiGetLocation = function (query) {
 		}
 	}).then(function (res) {
 		var location = res.result;
+		cocktailApp.getLocation(location);
 		console.log(location);
-		cocktailApp.lcboApiLocationDisplay(location);
 	});
 };
+
+//DYNAMIC CSS STYLES THAT MIGHT HAVE TO BE RELOCATED************
 
 $('.start').on('click', function () {
 	// if(hasValue('#result')) {
 	displayNext('#partOne');
 	$('header').css('display', 'none');
-	$('#partThree').css('display', 'none');
+	$('#partOnertThree').css('display', 'none');
 	// } else {
 	// 	alert('Please complete the form.')
 	// }
 });
 
+$('input[type=checkbox]').on('click', function () {
+	// if(hasValue('#result')) {
+	usersInput = $(this).val();
+	$('.partTwoHeader').text(usersInput + ', got it. Now here some cocktails you can make with that. ');
+});
+
 cocktailApp.getLocation = function () {
 	$('form.place').on('submit', function (e) {
 		e.preventDefault();
-		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
-	});
-
-	$('#submit').on('click', function () {
-		// if(hasValue('#result')) {
-		displayNext('#partTwo');
-		$('.partOne').css('display', 'none');
-		// } else {
-		// 	alert('Please complete the form.')
-		// }
+		cocktailApp.lcboApiGetLocation($('input.my-input').val());
 	});
 };
 
@@ -92,7 +90,7 @@ cocktailApp.drinksApi = function (alcohol) {
 		datatype: 'json'
 	}).then(function (res) {
 		var drinkResult = res.drinks;
-		console.log(drinkResult);
+		// console.log(drinkResult);
 		cocktailApp.display(drinkResult);
 	});
 };
@@ -105,11 +103,22 @@ cocktailApp.drinksId = function (drinkId) {
 	}).then(function (res) {
 		var drinkRecipe = res.drinks;
 		console.log(drinkRecipe);
-
-		// cocktailApp.display(drinkRecipe);
-
-		cocktailApp.display(drinkRecipe);
-
+		var ingredients = [];
+		var measurement = [];
+		for (var i = 1; i <= 15; i++) {
+			var ingredient = drinkRecipe[0]['strIngredient' + i];
+			var measure = drinkRecipe[0]['strMeasure' + i];
+			if (ingredient !== "") {
+				ingredients.push(ingredient, measure);
+				// measurement.push(measure);
+			}
+		}
+		ingredients.forEach(function (ingredient) {
+			$('.recipeIngredients').append('<p>' + ingredient + '</p>');
+		});
+		measurement.forEach(function (measure) {
+			$('span.recipeIngredient').append('' + measure);
+		});
 	});
 };
 
@@ -117,10 +126,7 @@ cocktailApp.getCocktailType = function () {
 	$('.typeOfLiquor').on('change', function (e) {
 		e.preventDefault();
 		console.log($('input[name="alchohol"]:checked').val());
-
 		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val()); //gets items from cocktail DB based on user choice
-
-		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val());
 	});
 };
 
@@ -128,21 +134,26 @@ cocktailApp.display = function (cocktails) {
 	console.log(cocktails);
 	cocktails.forEach(function (cocktail) {
 		if (cocktail.strDrinkThumb !== null) {
-			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '>\n\t\t\t\t\t<img class = \'resultsImage\' src="' + cocktail.strDrinkThumb + '">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t</div>');
+			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '>\n\t\t\t\t\t<img class = \'resultsImage\' src="' + cocktail.strDrinkThumb + '">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t\t<p class="recipeIngredients"> </p> <span class="recipeIngredient"></span>\n\t\t\t\t</div>\n\n\t\t\t');
 		} else {
-			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '> \n\t\t\t\t\t<img class = \'resultsImage\' src="./dev/assets/imageComingSoon.jpg">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t</div>');
+			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '> \n\t\t\t\t\t<img class = \'resultsImage\' src="./dev/assets/imageComingSoon.jpg">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t\t<p class="recipeIngredients"> </p>\n\t\t\t\t</div>');
 		}
-
 	});
 
-	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
+	$('.cocktailResults').one('click', '.cocktailResultsItem', function () {
 		console.log('lol neat');
 		$(this).siblings().hide();
 		var drinkId = $(this).data('id');
-		console.log(drinkId);
+		// console.log(drinkId);
 		cocktailApp.drinksId(drinkId);
-		cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
-		$('.cocktailResultsItem').append('\n\t\t\t\t<h3>heyhyehye' + cocktail.strIngredient1 + '</h3>\n\t\t\t');
+		var checkInventory = cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
+		// console.log(checkInventory);
+	});
+};
+
+cocktailApp.lcboApiDisplay = function (lcboInventory) {
+	lcboInventory.forEach(function (inventory) {
+		$('.lcboResults').append('\n\t\t\t<h3> ' + inventory.name + ' </h3>\n\t\t\t<img src=\'' + inventory.image_thumb_url + '\'>\n\t\t\t');
 	});
 };
 
@@ -151,34 +162,11 @@ cocktailApp.usersChoice = function () {
 		console.log('wow so super neat');
 		$(this).siblings().hide();
 	});
-
-	});
-
-	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
-		console.log('lol neat');
-		$(this).siblings().hide();
-		var drinkId = $(this).data('id');
-		console.log(drinkId);
-		cocktailApp.drinksId(drinkId);
-		$('.cocktailResults').append('\n\t\t\t\t<div class =\'cocktailResultsItem\'>\n\t\t\t\t\t<p class="recipe">' + cocktail.strIngredient1 + '</p>\n\t\t\t\t\t<p class="recipe">' + strIngredient2 + '</p>\n\t\t\t\t</div>\n\t\t\t');
-	});
-};
-
-cocktailApp.usersChoice = function () {
-	$('.typeOfLiquor').on('click', 'label.liquorChoice', function () {
-		console.log('wow so super neat');
-		$(this).siblings().hide();
-	});
-
-	// $('.cocktailResults').on('click', '.cocktailResultsItem', function(){
-	// 	console.log('lol neat');
-	// 	$(this).siblings().hide();
-	// 	console.log(drinkId);
-	// });
-
 };
 
 cocktailApp.usersChoice();
 cocktailApp.getCocktailType();
 cocktailApp.getLocation();
 cocktailApp.lcboApiGetBoozeType();
+cocktailApp.lcboApiGetLocation();
+cocktailApp.lcboApiDisplay();
