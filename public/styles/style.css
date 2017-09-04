@@ -155,7 +155,7 @@ header {
   background-size: cover; }
 
 h1 {
-  color: #fff;
+  color: rgba(225, 225, 225, 0.8);
   font-size: 110px;
   font-family: 'Abril Fatface', cursive;
   width: 50%;
@@ -230,7 +230,7 @@ header a:hover {
 
 h2 {
   font-family: "Abril Fatface";
-  color: #fff;
+  color: rgba(225, 225, 225, 0.8);
   font-size: 50px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
@@ -285,8 +285,14 @@ h2 {
   padding: 15px 20px;
   background: #fff; }
   .cocktailResultsItem h3 {
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase; }
+
+.cocktailResultsItem:hover {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1); }
 
 .totop {
   position: fixed;
@@ -321,12 +327,6 @@ h2 {
 #loadMore:hover {
   background-color: #fff;
   color: #33739E; }
-
-.cocktailResultsItem:hover {
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1); }
 
 .partTwo {
   background: #15181f; }
@@ -386,7 +386,8 @@ footer {
   color: white;
   text-align: center;
   padding-top: 30px;
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+  display: none; }
 
 .footerText h3 {
   font-size: 20px;

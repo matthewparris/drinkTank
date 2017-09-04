@@ -45,7 +45,7 @@
 
 h2 {
 	font-family: "Abril Fatface";
-	color: #fff;
+	color: rgba(225,225,225,0.8);
 	font-size: 50px;
 	transition: all 0.3s;
 }
@@ -109,38 +109,16 @@ h2 {
 	padding: 15px 20px;
 	background: #fff;
 	h3{
-		font-size: 14px;
+		font-size: 12px;
 		text-transform: uppercase;
 	}
 }
 
-// .cocktailResultsItem:nth-child(2n+1){
-// 	width: 31%;
-// 	margin-right: 2%;
-// }
+.cocktailResultsItem:hover{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transform: scale(1.1);
+}
 
-// .cocktailResultsItem:nth-child(2){
-// 	width: 31%;
-// 	margin-right: 2%;
-// }
-
-// .cocktailResultsItem:last-child{
-// 	width: 31%;
-// 	margin-right: 2%;
-// }
-
-
-// .cocktailResultsItem:nth-child(2){
-// 	margin-right: 0;
-// }
-
-// .cocktailResultsItem > :first-child{
-// 	margin-right: 13px;
-// }
-
-// .cocktailResultsItem > :nth-child(2){
-// 	margin-right: 13px;
-// }
 
 //we need this to display dynamically after all cocktails loaded
 .totop {
@@ -179,11 +157,6 @@ h2 {
 #loadMore:hover {
     background-color: #fff;
     color: #33739E ;
-}
-
-.cocktailResultsItem:hover{
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	transform: scale(1.1);
 }
 
 .partTwo {
