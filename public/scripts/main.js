@@ -73,7 +73,8 @@ $('input[type=checkbox]').on('click', function () {
 	// if(hasValue('#result')) {
 	usersInput = $(this).val();
 	$('.partTwoHeader').text(usersInput + ', got it. Now here\'s some cocktails you can make with that. ');
-
+	$('#loadMore').css('display', 'static');
+	$('.partTwoHeader').text(usersInput + ', got it. Now here\'s some cocktails you can make with that. ');
 	$('#loadMore').css('display', 'static');
 });
 
@@ -122,7 +123,6 @@ cocktailApp.drinksId = function (drinkId) {
 		measurement.forEach(function (measure) {
 			$('span.recipeIngredient').append('' + measure);
 		});
-		// cocktailApp.display(drinkRecipe);
 	});
 };
 
@@ -154,6 +154,10 @@ cocktailApp.display = function (cocktails) {
 		// console.log(checkInventory);
 	});
 };
+
+cocktailApp.lcboApiDisplay = function (lcboInventory) {
+	lcboInventory.forEach(function (inventory) {
+		$('.lcboResults').append('\n\t\t\t<h3> ' + inventory.name + ' </h3>\n\t\t\t<img src=\'' + inventory.image_thumb_url + '\'>\n\t\t\t');
 
 cocktailApp.lcboApiDisplay = function (lcboInventory) {
 	lcboInventory.forEach(function (inventory) {
@@ -192,7 +196,6 @@ cocktailApp.usersChoice = function () {
 		console.log('wow so super neat');
 		$(this).siblings().hide();
 	});
-
 };
 
 cocktailApp.init = function () {
@@ -206,4 +209,3 @@ cocktailApp.init = function () {
 $(function () {
 	cocktailApp.init();
 });
-
