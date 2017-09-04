@@ -80,6 +80,7 @@ $('input[type=checkbox]').on('click', function() {
 cocktailApp.getLocation = function (){
 	$('form.place').on('submit', function(e){
 		e.preventDefault();
+		$('#partOne').css('display', 'none');
 		cocktailApp.lcboApiGetLocation($('input.my-input').val());
 	})
 }
