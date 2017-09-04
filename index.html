@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./public/styles/style.css">
 </head>
-<body>
+<body id="top">
 	<header>
 		<div class="wrapper relative">
 			<div class="content">
@@ -39,7 +39,7 @@
 		<div class="absolute">
 			<div class="wrapper theAppDetails">
 				<h2 class="partTwoHeader">What's your liquor of choice?</h2>
-				<form class="typeOfLiquor clear">
+				<form class="typeOfLiquor clearfix">
 					<label class="liquorChoice" for="rum">Rum</label>
 					<input name="alchohol" value="Rum" id="rum" type="checkbox">
 					<label class="liquorChoice" for="whiskey">Whiskey</label>
@@ -56,12 +56,14 @@
 				<div class="drinkResults">
 					<div class="cocktailResults clearfix">
 						<!-- this is where the stuff will be populated form the cocktail DB -->
-					<a href="#" id="loadMore">Load More</a>
-					<p class="totop">
-						<a href="#top" class="backToTop">Back to top</a>
-					</p>
 					</div>
 				</div>
+					<div class="loadBtn clearfix">
+						<a href="#" id="loadMore" class="loadMoreBtn">Load More</a>
+						<p class="totop">
+							<a href="#top" class="backToTop">Back to top</a>
+						</p>
+					</div>
 			</div>
 		</div>
 	</section>
