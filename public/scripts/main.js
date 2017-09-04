@@ -37,6 +37,7 @@ cocktailApp.lcboApiGetBoozeType = function () {
 		cocktailApp.lcboApiGetInventory($('input.inventoryChoice').val());
 	});
 };
+
 cocktailApp.lcboApiGetLocation = function (query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -71,7 +72,9 @@ $('.start').on('click', function () {
 $('input[type=checkbox]').on('click', function () {
 	// if(hasValue('#result')) {
 	usersInput = $(this).val();
-	$('.partTwoHeader').text(usersInput + ', got it. Now here some cocktails you can make with that. ');
+	$('.partTwoHeader').text(usersInput + ', got it. Now here\'s some cocktails you can make with that. ');
+
+	$('#loadMore').css('display', 'static');
 });
 
 cocktailApp.getLocation = function () {
@@ -119,6 +122,7 @@ cocktailApp.drinksId = function (drinkId) {
 		measurement.forEach(function (measure) {
 			$('span.recipeIngredient').append('' + measure);
 		});
+		// cocktailApp.display(drinkRecipe);
 	});
 };
 
@@ -154,6 +158,32 @@ cocktailApp.display = function (cocktails) {
 cocktailApp.lcboApiDisplay = function (lcboInventory) {
 	lcboInventory.forEach(function (inventory) {
 		$('.lcboResults').append('\n\t\t\t<h3> ' + inventory.name + ' </h3>\n\t\t\t<img src=\'' + inventory.image_thumb_url + '\'>\n\t\t\t');
+
+cocktailApp.loadMore = function () {
+	$('.cocktailResultsItem').slice(0, 3).show();
+	$('#loadMore').on('click', function (e) {
+		e.preventDefault();
+		$('.cocktailResultsItem:hidden').slice(0, 3).slideDown();
+		if ($('.cocktailResultsItem:hidden').length == 0) {
+			$('#load').fadeOut('slow');
+		}
+		$('html,body').animate({
+			scrollTop: $(this).offset().top
+		}, 1500);
+		$('a[href=#top]').click(function () {
+			$('.partTwo').animate({
+				scrollTop: 0
+			}, 600);
+			return false;
+		});
+
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 50) {
+				$('.totop a').fadeIn();
+			} else {
+				$('.totop a').fadeOut();
+			}
+		});
 	});
 };
 
@@ -162,11 +192,18 @@ cocktailApp.usersChoice = function () {
 		console.log('wow so super neat');
 		$(this).siblings().hide();
 	});
+
 };
 
-cocktailApp.usersChoice();
-cocktailApp.getCocktailType();
-cocktailApp.getLocation();
-cocktailApp.lcboApiGetBoozeType();
-cocktailApp.lcboApiGetLocation();
-cocktailApp.lcboApiDisplay();
+cocktailApp.init = function () {
+	cocktailApp.usersChoice();
+	cocktailApp.getCocktailType();
+	cocktailApp.getLocation();
+	cocktailApp.lcboApiGetBoozeType();
+	cocktailApp.loadMore();
+};
+
+$(function () {
+	cocktailApp.init();
+});
+

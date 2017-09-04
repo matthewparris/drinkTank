@@ -45,7 +45,7 @@
 
 h2 {
 	font-family: "Abril Fatface";
-	color: #fff;
+	color: rgba(225,225,225,0.8);
 	font-size: 50px;
 	transition: all 0.3s;
 }
@@ -81,7 +81,7 @@ h2 {
     .inputField #location::-webkit-input-placeholder {
       /* WebKit, Blink, Edge */
       color: #fff;
-      opacity: 0; }
+      opacity: .5; }
       .inputField #location[type=text]:focus {
       outline: none; }
 
@@ -98,20 +98,65 @@ h2 {
       background-repeat: no-repeat;
       background-position: center center; }
 
+//Load MORE section
 .cocktailResultsItem{
+	display: none; 
 	float: left;
-	width: calc((100% / 3) - 13px);
-	margin: 13px 13px 13px 0;
+	width: calc(33.3% - 26px);
+	margin: 13px;
 	text-align: center;
 	border: 1px solid white;
 	padding: 15px 20px;
 	background: #fff;
-	
+	h3{
+		font-size: 12px;
+		text-transform: uppercase;
+	}
 }
 
 .cocktailResultsItem:hover{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	transform: scale(1.1);
+}
+
+
+//we need this to display dynamically after all cocktails loaded
+.totop {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    display: none;
+}
+
+#loadMore, .totop{
+	a, a:visited {
+	    color: #33739E ;
+	    text-decoration: none;
+	    display: block;
+	    margin: 10px 0;
+	}
+	a:hover {
+	    text-decoration: none;
+	}
+}
+#loadMore {
+    padding: 10px;
+    text-align: center;
+    background-color: #33739E ;
+    color: #fff;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 1px 1px #ccc;
+    // display: none;
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    -o-transition: all 600ms ease-in-out;
+}
+#loadMore:hover {
+    background-color: #fff;
+    color: #33739E ;
 }
 
 .partTwo {
@@ -181,3 +226,9 @@ h2 {
 a#giveMeRecipe {
 	display: block;
 }
+
+
+
+// .cocktailResultsItem:nth-child(3n -3){
+// 	margin-right: 13px;
+// }
