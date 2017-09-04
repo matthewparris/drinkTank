@@ -155,12 +155,12 @@ header {
   background-size: cover; }
 
 h1 {
-  color: #fff;
+  color: rgba(225, 225, 225, 0.8);
   font-size: 110px;
   font-family: 'Abril Fatface', cursive;
   width: 50%;
   margin: 0;
-  margin-bottom: 50px;
+  margin-bottom: 75px;
   letter-spacing: 3px; }
 
 header a {
@@ -230,7 +230,7 @@ header a:hover {
 
 h2 {
   font-family: "Abril Fatface";
-  color: #fff;
+  color: rgba(225, 225, 225, 0.8);
   font-size: 50px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
@@ -257,7 +257,7 @@ h2 {
 .inputField #location::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   color: #fff;
-  opacity: 0; }
+  opacity: .5; }
 
 .inputField #location[type=text]:focus {
   outline: none; }
@@ -276,19 +276,57 @@ h2 {
   background-position: center center; }
 
 .cocktailResultsItem {
+  display: none;
   float: left;
-  width: calc((100% / 3) - 13px);
-  margin: 13px 13px 13px 0;
+  width: calc(33.3% - 26px);
+  margin: 13px;
   text-align: center;
   border: 1px solid white;
   padding: 15px 20px;
   background: #fff; }
+  .cocktailResultsItem h3 {
+    font-size: 12px;
+    text-transform: uppercase; }
 
 .cocktailResultsItem:hover {
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-transform: scale(1.1);
           transform: scale(1.1); }
+
+.totop {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  display: none; }
+
+#loadMore a, #loadMore a:visited, .totop a, .totop a:visited {
+  color: #33739E;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0; }
+
+#loadMore a:hover, .totop a:hover {
+  text-decoration: none; }
+
+#loadMore {
+  padding: 10px;
+  text-align: center;
+  background-color: #33739E;
+  color: #fff;
+  border-width: 0 1px 1px 0;
+  border-style: solid;
+  border-color: #fff;
+  -webkit-box-shadow: 0 1px 1px #ccc;
+          box-shadow: 0 1px 1px #ccc;
+  transition: all 600ms ease-in-out;
+  -webkit-transition: all 600ms ease-in-out;
+  -moz-transition: all 600ms ease-in-out;
+  -o-transition: all 600ms ease-in-out; }
+
+#loadMore:hover {
+  background-color: #fff;
+  color: #33739E; }
 
 .partTwo {
   background: #15181f; }
@@ -348,7 +386,8 @@ footer {
   color: white;
   text-align: center;
   padding-top: 30px;
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+  display: none; }
 
 .footerText h3 {
   font-size: 20px;
