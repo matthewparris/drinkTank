@@ -38,6 +38,40 @@ cocktailApp.lcboApiGetBoozeType = function () {
 	});
 };
 
+// cocktailApp.lcboApiGetLocation = function(query) {
+// 	$.ajax({
+// 		url: 'https://lcboapi.com/stores',
+// 		method: 'GET',
+// 		datatype: 'json',
+// 		data: {
+// 			per_page: 100,
+// 			q: query
+// 		},
+// 		headers: {
+// 			'Authorization': 'Token ' + cocktailApp.lcboApiKey,
+// 		}
+// 	}).then(function(res){
+// 		var location = res.result;
+// 		cocktailApp.lcboApiDisplay(location);
+// 	});
+// } 
+
+// cocktailApp.getLocation = function (){
+// 	$('form.place').on('submit', function(e){
+// 		e.preventDefault();
+// 		cocktailApp.lcboApiGetLocation($('input.placeInput').val());
+// 	})
+
+// 	$('.submitInput').on('click', function() {
+// 		// if(hasValue('#result')) {
+// 		  displayNext('#partTwo');
+// 		  $('.partOne').css('display', 'none');
+// 		// } else {
+// 		// 	alert('Please complete the form.')
+// 		// }
+// 	});
+// }
+
 cocktailApp.lcboApiGetLocation = function (query) {
 	$.ajax({
 		url: 'https://lcboapi.com/stores',
@@ -57,6 +91,8 @@ cocktailApp.lcboApiGetLocation = function (query) {
 	});
 };
 
+//DYNAMIC CSS STYLES THAT MIGHT HAVE TO BE RELOCATED************
+
 $('.start').on('click', function () {
 	// if(hasValue('#result')) {
 	displayNext('#partOne');
@@ -65,6 +101,14 @@ $('.start').on('click', function () {
 	// } else {
 	// 	alert('Please complete the form.')
 	// }
+});
+
+$('input[type=checkbox]').on('click', function () {
+	// if(hasValue('#result')) {
+	usersInput = $(this).val();
+	$('.partTwoHeader').text(usersInput + ', got it. Now here\'s some cocktails you can make with that. ');
+
+	$('#loadMore').css('display', 'static');
 });
 
 cocktailApp.getLocation = function () {
@@ -105,11 +149,7 @@ cocktailApp.drinksId = function (drinkId) {
 	}).then(function (res) {
 		var drinkRecipe = res.drinks;
 		console.log(drinkRecipe);
-
 		// cocktailApp.display(drinkRecipe);
-
-		cocktailApp.display(drinkRecipe);
-
 	});
 };
 
@@ -117,10 +157,7 @@ cocktailApp.getCocktailType = function () {
 	$('.typeOfLiquor').on('change', function (e) {
 		e.preventDefault();
 		console.log($('input[name="alchohol"]:checked').val());
-
 		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val()); //gets items from cocktail DB based on user choice
-
-		cocktailApp.drinksApi($('input[name="alchohol"]:checked').val());
 	});
 };
 
@@ -132,7 +169,6 @@ cocktailApp.display = function (cocktails) {
 		} else {
 			$('.cocktailResults').append('<div class =\'cocktailResultsItem\' data-id=' + cocktail.idDrink + '> \n\t\t\t\t\t<img class = \'resultsImage\' src="./dev/assets/imageComingSoon.jpg">\n\t\t\t\t\t<h3 class = \'resultsItemTitle\'>' + cocktail.strDrink + '</h3>\n\t\t\t\t</div>');
 		}
-
 	});
 
 	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
@@ -146,21 +182,47 @@ cocktailApp.display = function (cocktails) {
 	});
 };
 
-cocktailApp.usersChoice = function () {
-	$('.typeOfLiquor').on('click', 'label.liquorChoice', function () {
-		console.log('wow so super neat');
-		$(this).siblings().hide();
-	});
+// cocktailApp.loadMore = () => {
+// 	$('.cocktailResultsItem').slice(0,3).show();
+// 	$('#loadMore').on('click', function (e){
+// 		e.preventDefault();
+// 		$('.cocktailResultsItem:hidden').slice(0,4).slideDown();
 
-	});
+// 		if ($('.cocktailResultsItem:hidden').length == 0) {
+// 			$('#load').fadeOut('slow');
+// 	}
+// 	$('html, body').animate({
+// 		scrollTop: $(this).offset().top
+// 	}, 1500);
 
-	$('.cocktailResults').on('click', '.cocktailResultsItem', function () {
-		console.log('lol neat');
-		$(this).siblings().hide();
-		var drinkId = $(this).data('id');
-		console.log(drinkId);
-		cocktailApp.drinksId(drinkId);
-		$('.cocktailResults').append('\n\t\t\t\t<div class =\'cocktailResultsItem\'>\n\t\t\t\t\t<p class="recipe">' + cocktail.strIngredient1 + '</p>\n\t\t\t\t\t<p class="recipe">' + strIngredient2 + '</p>\n\t\t\t\t</div>\n\t\t\t');
+// 	});
+// }
+
+cocktailApp.loadMore = function () {
+	$('.cocktailResultsItem').slice(0, 3).show();
+	$('#loadMore').on('click', function (e) {
+		e.preventDefault();
+		$('.cocktailResultsItem:hidden').slice(0, 3).slideDown();
+		if ($('.cocktailResultsItem:hidden').length == 0) {
+			$('#load').fadeOut('slow');
+		}
+		$('html,body').animate({
+			scrollTop: $(this).offset().top
+		}, 1500);
+		$('a[href=#top]').click(function () {
+			$('.partTwo').animate({
+				scrollTop: 0
+			}, 600);
+			return false;
+		});
+
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 50) {
+				$('.totop a').fadeIn();
+			} else {
+				$('.totop a').fadeOut();
+			}
+		});
 	});
 };
 
@@ -169,16 +231,16 @@ cocktailApp.usersChoice = function () {
 		console.log('wow so super neat');
 		$(this).siblings().hide();
 	});
-
-	// $('.cocktailResults').on('click', '.cocktailResultsItem', function(){
-	// 	console.log('lol neat');
-	// 	$(this).siblings().hide();
-	// 	console.log(drinkId);
-	// });
-
 };
 
-cocktailApp.usersChoice();
-cocktailApp.getCocktailType();
-cocktailApp.getLocation();
-cocktailApp.lcboApiGetBoozeType();
+cocktailApp.init = function () {
+	cocktailApp.usersChoice();
+	cocktailApp.getCocktailType();
+	cocktailApp.getLocation();
+	cocktailApp.lcboApiGetBoozeType();
+	cocktailApp.loadMore();
+};
+
+$(function () {
+	cocktailApp.init();
+});
