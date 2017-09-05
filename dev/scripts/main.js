@@ -1,7 +1,3 @@
-const ohHey = "Hello World";
-
-console.log(ohHey);
-
 var cocktailApp = {}
 
 cocktailApp.lcboApiKey = 'MDpkMDI1ZmE1Mi04YzM4LTExZTctOTEzNi04ZjUwZWNlZjYzZDk6YWc5TmJBN2pJcHJROFJSTWhMMHZQejVhbWJydVdUdHdWamdP';
@@ -37,20 +33,15 @@ cocktailApp.lcboApiGetLocation = function(query) {
 } 
 
 
-//DYNAMIC CSS STYLES THAT MIGHT HAVE TO BE RELOCATED************
+//DYNAMIC CSS STYLES ****
 
 $('.start').on('click', function() {
-	// if(hasValue('#result')) {
 	  displayNext('#partOne');
 	  $('header').css('display', 'none');
 	  $('#partOnertThree').css('display', 'none');
-	// } else {
-	// 	alert('Please complete the form.')
-	// }
 });
 
 $('input[type=checkbox]').on('click', function() {
-	// if(hasValue('#result')) {
 	usersInput = $(this).val();
 	  $('.partTwoHeader').text(`${usersInput}, got it. Now here's some cocktails you can make with that. `)
 
@@ -76,7 +67,6 @@ cocktailApp.drinksApi = function(alcohol) {
 		datatype: 'json'
 	}).then(function(res){
 		var drinkResult = res.drinks;
-		// console.log(drinkResult, ' drink results');
 		cocktailApp.display(drinkResult);
 		cocktailApp.loadMore();	
 	});
@@ -90,7 +80,6 @@ cocktailApp.usersChoice = function() {
 		$('.theAppDetails').css('top', '0');
 		$('.theAppDetails').css('left', '0');
 		$('.theAppDetails').css('transform', 'none');
-		// $('#partTwoHeader').css('transform', 'none');
 		$('html,body').animate({
      		scrollTop: $("#partTwo").offset().top},
      	'slow');
@@ -128,12 +117,6 @@ cocktailApp.display = function(cocktails) {
 		}
 	});
 
-// <<<<<<< HEAD
-	// $('.cocktailResults').one('click', '.cocktailResultsItem', function(){
-	// 	console.log('lol neat');
-	// 	$(this).siblings().hide();
-	// 	console.log(this);
-// =======
 	$('.cocktailResults').on('click', '.cocktailResultsItem', function(){
 		$('.cocktailResults').off();
 
@@ -142,23 +125,17 @@ cocktailApp.display = function(cocktails) {
 		$(this).css('hover','none');
 		$(this).css('margin','0 auto');
 		$(this).siblings().hide();
-		// usersCocktailChoice = $(this).val();
-		// displayNext('#partThree');
-		// $('header').css('display', 'none');
-		// $('#partOne').css('display', 'none');
-		// $('#partTwo').css('display', 'none');
 		$('.cocktailResults').css('position', 'relative');
 		$('#loadMore').css('display', 'none');
 		$('.partTwoHeader').text(`Let's make you that cocktail`);
 		cocktailApp.lcboApiGetInventory();
-// >>>>>>> 2d58ee50ce5e4c5fa53ce5c07fee830f8f062fd3
 		var drinkId = $(this).data('id');
 		cocktailApp.drinksId(drinkId);
 		let checkInventory = cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
 	});
-		// cocktailApp.lcboApiGetInventory();
 }
 
+//Load more function - allowing the user to load more cocktail options
 cocktailApp.loadMore = function () {
     $('.cocktailResultsItem').slice(0, 3).show();
     $('#loadMore').on('click', function(e) {
@@ -178,7 +155,6 @@ cocktailApp.loadMore = function () {
 		});
 
 		$(window).scroll(function () {
-			// console.log("THIS");
 			console.log($(this));
 		    if ($(this).scrollTop() > 50) {
 		        $('.totop a').fadeIn();
@@ -205,7 +181,6 @@ cocktailApp.drinksId = function(drinkId){
 			const measure = drinkRecipe[0][`strMeasure${i}`];
 			if (ingredient !== "") {
 				ingredients.push(ingredient, measure);
-				// measurement.push(measure);
 			}
 		}
 
@@ -238,14 +213,12 @@ cocktailApp.lcboApiGetInventory = function(query) {
 		}
 	}).then(function(res){
 		var inventoryItem = res.result;
-		// console.log(inventoryItem);
 		cocktailApp.lcboApiDisplay(inventoryItem);
 	});
 }
 
 cocktailApp.lcboApiDisplay = function (lcboInventory) {
     lcboInventory.forEach(function(inventory){
-        // console.log(inventory);
         if (inventory.image_thumb_url !== null){
             $('.lcboResults').append(`
             	<div class='lcboDrinkOptions'>
@@ -269,10 +242,7 @@ cocktailApp.lcboApiDisplay = function (lcboInventory) {
 
 cocktailApp.init = function () {
 	cocktailApp.usersChoice();
-	// cocktailApp.lcboApiDisplay();
-	// cocktailApp.getCocktailType();
 	cocktailApp.getLocation();
-	// cocktailApp.lcboApiGetInventory();
 	cocktailApp.loadMore();
 };
 

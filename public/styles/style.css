@@ -188,6 +188,42 @@ header a:hover {
   -webkit-transform: translateY(0, -50%);
           transform: translateY(0, -50%); }
 
+/* Portrait tablet and small desktops */
+@media screen and (max-width: 971px) {
+  h1 {
+    width: 60%; } }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 807px) {
+  .content {
+    margin-left: 30px; }
+  h1 {
+    width: 80%; }
+  header {
+    background-position: bottom; } }
+
+@media (max-width: 608px) {
+  h1 {
+    width: 90%;
+    font-size: 100px; }
+  header {
+    background-position: bottom; } }
+
+@media (max-width: 549px) {
+  h1 {
+    width: 90%;
+    font-size: 90px; }
+  header {
+    background-position: bottom; } }
+
+/* Landscape phones and down */
+@media (max-width: 490px) {
+  .content {
+    margin-left: 10px; }
+  h1 {
+    width: 100%;
+    font-size: 70px; } }
+
 .theApp {
   letter-spacing: 2px;
   text-align: center;
@@ -394,6 +430,63 @@ a#giveMeRecipe {
   .lcboDrinkOptions h3 {
     font-size: 12px;
     text-transform: uppercase; }
+
+/* Portrait tablet and small desktops */
+@media screen and (max-width: 971px) {
+  h3.resultsItemTitle {
+    width: 150px;
+    height: 50px;
+    margin: 0 auto; } }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 870px) {
+  .cocktailResultsItem {
+    width: calc(50% - 26px);
+    margin: 13px; }
+  .liquorChoice {
+    width: calc((100% / 3) - 26px);
+    margin: 13px 13px 13px 13px; } }
+
+@media (max-width: 800px) {
+  .inputField {
+    width: 600px; }
+    .inputField #location {
+      font-size: 25px; }
+  .lcboDrinkOptions {
+    width: calc(50% - 26px);
+    margin: 13px; } }
+
+@media (max-width: 680px) {
+  .inputField {
+    width: 500px; }
+    .inputField #location {
+      font-size: 20px; } }
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  h2.inputQuestion {
+    font-size: 30px; }
+  .inputField {
+    width: 400px; }
+    .inputField #location {
+      font-size: 15px; }
+    .inputField #submit {
+      width: 40px;
+      height: 40px; }
+  input#submit {
+    width: 30px;
+    height: 30px; }
+  .liquorChoice {
+    width: calc((100% / 2) - 26px);
+    margin: 13px 13px 13px 13px; }
+  h2.partTwoHeader {
+    font-size: 40px; }
+  .cocktailResultsItem {
+    width: calc(100% - 26px);
+    margin: 13px; }
+  .lcboDrinkOptions {
+    width: calc(100% - 26px);
+    margin: 13px; } }
 
 footer {
   width: 100%;
