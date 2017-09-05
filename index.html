@@ -38,7 +38,7 @@
 	<img src="./dev/assets/iconWhite.png" alt="" class="iconBackdropLight">
 		<div class="absolute">
 			<div class="wrapper theAppDetails">
-				<h2 class="partTwoHeader">What's your liquor of choice?</h2>
+				<h2 class="partTwoHeader" id="partTwoHeader">What's your liquor of choice?</h2>
 				<form class="typeOfLiquor clearfix">
 					<label class="liquorChoice" for="rum">Rum</label>
 					<input name="alchohol" value="Rum" id="rum" type="checkbox">
@@ -54,29 +54,34 @@
 					<input name="alchohol" value="Wine" id="wine" type="checkbox">
 				</form>
 				<div class="drinkResults">
-					<div class="cocktailResults clearfix">
+					<div class="cocktailResults">
+						<div class="cocktailResultsContainer clearfix"></div>
+
 						<!-- this is where the stuff will be populated form the cocktail DB -->
+						<div class="loadBtn clearfix">
+							<a href="#" id="loadMore" class="loadMoreBtn">Load More</a>
+							<p class="totop">
+								<a href="#top" class="backToTop">Back to top</a>
+							</p>
+						</div>
 					</div>
 				</div>
-					<div class="loadBtn clearfix">
-						<a href="#" id="loadMore" class="loadMoreBtn">Load More</a>
-						<p class="totop">
-							<a href="#top" class="backToTop">Back to top</a>
-						</p>
-					</div>
-			</div>
-		</div>
-	</section>
-	
-	<section class="theApp partThree" id="partThree">
-		<div class="absolute">
-			<div class="wrapper theAppDetails">
-				<div class="lcboResults">
+				<div class="lcboResults clearfix">
 					<!-- this is where the listings from the LCBO will be populated -->
 				</div>
 			</div>
 		</div>
 	</section>
+	
+<!-- 	<section class="theApp partThree" id="partThree">
+		<div class="absolute">
+			<div class="wrapper theAppDetails">
+				<div class="lcboResults">
+					this is where the listings from the LCBO will be populated
+				</div>
+			</div>
+		</div>
+	</section> -->
 
 	<footer>
 		<div class="wrapper">
