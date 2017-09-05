@@ -36,6 +36,27 @@ cocktailApp.lcboApiGetLocation = function(query) {
 	});
 } 
 
+
+//DYNAMIC CSS STYLES THAT MIGHT HAVE TO BE RELOCATED************
+
+$('.start').on('click', function() {
+	// if(hasValue('#result')) {
+	  displayNext('#partOne');
+	  $('header').css('display', 'none');
+	  $('#partOnertThree').css('display', 'none');
+	// } else {
+	// 	alert('Please complete the form.')
+	// }
+});
+
+$('input[type=checkbox]').on('click', function() {
+	// if(hasValue('#result')) {
+	usersInput = $(this).val();
+	  $('.partTwoHeader').text(`${usersInput}, got it. Now here's some cocktails you can make with that. `)
+
+	$('#loadMore').css('display', 'static');
+});
+
 cocktailApp.getLocation = function (){
 	$('form.place').on('submit', function(e){
 		e.preventDefault();
@@ -214,6 +235,7 @@ cocktailApp.lcboApiGetInventory = function(query) {
 }
 
 cocktailApp.lcboApiDisplay = function (lcboInventory) {
+
     lcboInventory.forEach(function(inventory){
         // console.log(inventory);
         if (inventory.image_thumb_url !== null){
@@ -236,12 +258,6 @@ cocktailApp.lcboApiDisplay = function (lcboInventory) {
 }
 
 
-// cocktailApp.lcboApiGetBoozeType = function(){
-// 	$('form.whatBooze').on('submit', function(e){
-// 		e.preventDefault();
-// 		cocktailApp.lcboApiGetInventory($('input.inventoryChoice').val());
-// 	});
-// }
 
 cocktailApp.init = function() {
 	cocktailApp.getLocation();
