@@ -63,7 +63,7 @@ $('input[type=checkbox]').on('click', function() {
 });
 
 cocktailApp.getLocation = function (){
-	$('form.place').on('submit', function(e){
+	$('form.place').one('submit', function(e){
 		e.preventDefault();
 		$('#partOne').css('display', 'none');
 		cocktailApp.lcboApiGetLocation($('input.my-input').val());
@@ -124,16 +124,15 @@ cocktailApp.display = function(cocktails) {
 		}
 	});
 
-	$('.cocktailResults').on('click', '.cocktailResultsItem', function(){
+	$('.cocktailResults').one('click', '.cocktailResultsItem', function(){
 		console.log('lol neat');
 		$(this).siblings().hide();
 		console.log(this);
-
 		var drinkId = $(this).data('id');
-
 		cocktailApp.drinksId(drinkId);
 		let checkInventory = cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
 	});
+		cocktailApp.lcboApiGetInventory();
 }
 
 cocktailApp.loadMore = function () {
@@ -212,7 +211,7 @@ cocktailApp.lcboApiGetInventory = function(query) {
 		}
 	}).then(function(res){
 		var inventoryItem = res.result;
-		console.log(inventoryItem);
+		// console.log(inventoryItem);
 		cocktailApp.lcboApiDisplay(inventoryItem);
 	});
 }
@@ -224,7 +223,7 @@ cocktailApp.lcboApiDisplay = function (lcboInventory) {
 			<h3> ${inventory.name} </h3>
 			<img src='${inventory.image_thumb_url}'>
 			`)
-	});
+		});
 
 }
 
@@ -236,12 +235,14 @@ cocktailApp.lcboApiDisplay = function (lcboInventory) {
 // 	});
 // }
 
-cocktailApp.init = function() {
-	cocktailApp.getLocation();
-	// cocktailApp.lcboApiGetBoozeType();
+cocktailApp.init = function () {
 	cocktailApp.usersChoice();
-	
-} 
+	// cocktailApp.lcboApiDisplay();
+	// cocktailApp.getCocktailType();
+	cocktailApp.getLocation();
+	// cocktailApp.lcboApiGetInventory();
+	cocktailApp.loadMore();
+};
 
 $(function(){
 	cocktailApp.init();
