@@ -128,12 +128,12 @@ cocktailApp.display = function(cocktails) {
 		}
 	});
 
-<<<<<<< HEAD
-	$('.cocktailResults').one('click', '.cocktailResultsItem', function(){
-		console.log('lol neat');
-		$(this).siblings().hide();
-		console.log(this);
-=======
+// <<<<<<< HEAD
+	// $('.cocktailResults').one('click', '.cocktailResultsItem', function(){
+	// 	console.log('lol neat');
+	// 	$(this).siblings().hide();
+	// 	console.log(this);
+// =======
 	$('.cocktailResults').on('click', '.cocktailResultsItem', function(){
 		$('.cocktailResults').off();
 
@@ -150,12 +150,13 @@ cocktailApp.display = function(cocktails) {
 		$('.cocktailResults').css('position', 'relative');
 		$('#loadMore').css('display', 'none');
 		$('.partTwoHeader').text(`Let's make you that cocktail`);
->>>>>>> 2d58ee50ce5e4c5fa53ce5c07fee830f8f062fd3
+		cocktailApp.lcboApiGetInventory();
+// >>>>>>> 2d58ee50ce5e4c5fa53ce5c07fee830f8f062fd3
 		var drinkId = $(this).data('id');
 		cocktailApp.drinksId(drinkId);
 		let checkInventory = cocktailApp.lcboApiGetInventory($('input[name="alchohol"]:checked').val()); //syncs users choice with LCBOs inventory
 	});
-		cocktailApp.lcboApiGetInventory();
+		// cocktailApp.lcboApiGetInventory();
 }
 
 cocktailApp.loadMore = function () {
@@ -177,7 +178,7 @@ cocktailApp.loadMore = function () {
 		});
 
 		$(window).scroll(function () {
-			console.log("THIS");
+			// console.log("THIS");
 			console.log($(this));
 		    if ($(this).scrollTop() > 50) {
 		        $('.totop a').fadeIn();
@@ -210,6 +211,7 @@ cocktailApp.drinksId = function(drinkId){
 
 		ingredients.forEach(function(ingredient) {
 			$('.recipeIngredients').append(`<p>${ingredient}</p>`);
+			
 		});
 
 		measurement.forEach(function(measure){
@@ -242,17 +244,6 @@ cocktailApp.lcboApiGetInventory = function(query) {
 }
 
 cocktailApp.lcboApiDisplay = function (lcboInventory) {
-<<<<<<< HEAD
-	lcboInventory.forEach(function(inventory){
-		// console.log(inventory);
-		$('.lcboResults').append(`
-			<h3> ${inventory.name} </h3>
-			<img src='${inventory.image_thumb_url}'>
-			`)
-		});
-=======
->>>>>>> 2d58ee50ce5e4c5fa53ce5c07fee830f8f062fd3
-
     lcboInventory.forEach(function(inventory){
         // console.log(inventory);
         if (inventory.image_thumb_url !== null){
