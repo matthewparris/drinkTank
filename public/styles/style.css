@@ -193,8 +193,14 @@ header a:hover {
   text-align: center;
   position: relative; }
 
+.partOne, .partTwo, .partThree {
+  display: none; }
+
 .partOne {
   background: #f18f01; }
+
+.partTwo {
+  background: #15181f; }
 
 .absolute {
   min-height: 100vh;
@@ -300,26 +306,18 @@ h2 {
   right: 20px;
   display: none; }
 
-#loadMore a, #loadMore a:visited, .totop a, .totop a:visited {
-  color: #33739E;
-  text-decoration: none;
-  display: block;
-  margin: 10px 0; }
-
-#loadMore a:hover, .totop a:hover {
-  text-decoration: none; }
-
 #loadMore {
-  padding: 10px;
-  text-align: center;
-  background-color: #33739E;
-  color: #fff;
-  border-width: 0 1px 1px 0;
-  border-style: solid;
-  border-color: #fff;
-  -webkit-box-shadow: 0 1px 1px #ccc;
-          box-shadow: 0 1px 1px #ccc;
   display: none;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 40%;
+  background: rgba(255, 255, 255, 0.25);
+  border: 5px solid #fff;
+  color: #fff;
+  text-align: center;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   transition: all 600ms ease-in-out;
   -webkit-transition: all 600ms ease-in-out;
   -moz-transition: all 600ms ease-in-out;
@@ -329,8 +327,14 @@ h2 {
   background-color: #fff;
   color: #33739E; }
 
-.partTwo {
-  background: #15181f; }
+#loadMore a, #loadMore a:visited, .totop a, .totop a:visited {
+  color: #33739E;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0; }
+
+#loadMore a:hover, .totop a:hover {
+  text-decoration: none; }
 
 .liquorChoice {
   float: left;
@@ -375,11 +379,21 @@ h2 {
   text-align: center;
   margin-bottom: 3%; }
 
-.partThree {
-  background: #c73e1d; }
-
 a#giveMeRecipe {
   display: block; }
+
+.lcboDrinkOptions {
+  float: left;
+  width: calc(33.3% - 26px);
+  margin: 13px;
+  text-align: center;
+  border: 1px solid white;
+  padding: 15px 20px;
+  background: #fff;
+  height: 400px; }
+  .lcboDrinkOptions h3 {
+    font-size: 12px;
+    text-transform: uppercase; }
 
 footer {
   width: 100%;
